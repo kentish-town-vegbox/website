@@ -22,6 +22,13 @@ h1 span{color:var(--beet)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);margin-left:.6rem}
 .btn.ghost:hover{border-color:var(--beet);color:var(--beet)}
 
+/* ---------- hero rating badge ---------- */
+.hero-rating{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.6rem;text-decoration:none;color:var(--ink);background:var(--card);border-radius:999px;padding:.5rem .95rem;box-shadow:3px 4px 0 rgba(16,24,32,.14);transition:transform .15s ease}
+.hero-rating:hover{transform:translateY(-2px)}
+.hero-rating .hr-stars{color:var(--orange);font-size:1.15rem;letter-spacing:.06em;line-height:1}
+.hero-rating .hr-score{font-family:var(--fun);color:var(--beet);font-size:1.05rem}
+.hero-rating .hr-text{font-size:.92rem;color:rgba(16,24,32,.7)}
+
 /* ---------- bag ticket note card ---------- */
 .note-card{
   background:var(--card);border-radius:6px;
@@ -196,6 +203,11 @@ footer a{color:var(--beet)}
         <p class="lede">We are a not-for-profit co-operative, packing bags of organic produce from local UK farms, delivering to collection points across Camden and Islington. We are run by our members, and proudly rooted in North London since 2012.</p>
         <a class="btn" href="signup.html">Join the scheme</a>
         <a class="btn ghost" href="#how">How it works</a>
+        <a class="hero-rating" href="#reviews" title="See our reviews">
+          <span class="hr-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="hr-score">4.9</span>
+          <span class="hr-text">· 96 Google reviews</span>
+        </a>
       </div>
 
       <aside class="note-card" aria-label="This week's bag contents">
