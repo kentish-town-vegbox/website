@@ -5,63 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kentish Town Vegbox – local organic fruit &amp; veg, delivered weekly</title>
 <meta name="description" content="Kentish Town Vegbox is a not-for-profit community co-operative supplying weekly bags of local organic fruit and vegetables to collection points across Camden and Islington. Est. 2012.">
+<link rel="stylesheet" href="styles.css">
 <style>
-/* ---------- brand fonts ---------- */
-@font-face{font-family:'New Spirit';src:url('fonts/new_spirit_bold.woff2') format('woff2');font-weight:700;font-display:swap}
-@font-face{font-family:'Chaloops';src:url('fonts/chaloops_bold.woff2') format('woff2');font-weight:700;font-display:swap}
-@font-face{font-family:'Six Hands';src:url('fonts/six_hands_marker.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
-
-/* ---------- brand palette (Vegbox Brand Manual §2) ---------- */
-:root{
-  --ink:#101820;        /* Black 6C */
-  --beet:#8F2147;       /* 7015C – primary */
-  --green:#2F3B08;      /* 5747CP */
-  --yellow:#E2D028;     /* 116C */
-  --orange:#F7A031;     /* 178C */
-  --paper:#F2F0EB;
-  --card:#FBFAF7;
-  --display:'New Spirit',serif;
-  --fun:'Chaloops',cursive;
-  --hand:'Six Hands',cursive;
-  --body:'Work Sans',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
+/* index uses a full-bleed section layout, not the standard padded <main> */
+main{padding:0}
 html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-}
-body{
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:1.0625rem;
-  line-height:1.65;
-  position:relative;
-}
-/* paper texture overlay (Brand Manual §4.3) */
-body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;
-  opacity:.35;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-a{color:var(--beet)}
-a:focus-visible,button:focus-visible{outline:3px solid var(--beet);outline-offset:3px;border-radius:2px}
-img{max-width:100%;height:auto;display:block}
-.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
-
-/* ---------- header ---------- */
-header{background:var(--paper)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;gap:1.25rem;flex-wrap:wrap}
-.nav img{width:170px}
-nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center}
-nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
-nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
-nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
-nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
+a:focus-visible,button:focus-visible{outline-offset:3px}
 
 /* ---------- hero (yellow, like the welcome pack) ---------- */
 .hero{background:var(--yellow);padding:4rem 0 0;overflow:hidden}
@@ -70,8 +19,6 @@ nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(2.3rem,5.2vw,3.7rem);line-height:1.07;margin-bottom:1.2rem;color:var(--ink)}
 h1 span{color:var(--beet)}
 .hero p.lede{font-size:1.18rem;max-width:32em;margin-bottom:1.9rem}
-.btn{display:inline-block;background:var(--beet);color:#fff;text-decoration:none;font-family:var(--fun);font-size:1.05rem;padding:.8rem 1.7rem;border-radius:999px;border:2.5px solid var(--beet)}
-.btn:hover{background:transparent;color:var(--beet)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);margin-left:.6rem}
 .btn.ghost:hover{border-color:var(--beet);color:var(--beet)}
 
@@ -103,8 +50,7 @@ h1 span{color:var(--beet)}
 
 /* ---------- sections ---------- */
 section{padding:4rem 0}
-h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.6vw,2.4rem);margin-bottom:1.75rem}
-.sub{font-family:var(--fun);font-size:1.1rem;color:var(--beet);margin-bottom:.5rem}
+h2.sec{font-size:clamp(1.75rem,3.6vw,2.4rem);margin:0 0 1.75rem}
 
 /* how it works */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:.5rem}
@@ -200,13 +146,13 @@ h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.6vw,
 .join p{max-width:44em;margin-bottom:1rem}
 .join .btn{margin-top:.75rem}
 
-/* footer */
+/* footer – paper variant (overrides the shared green footer) */
 .trees{background:var(--paper)}
 .trees img{width:100%;max-width:none}
-footer{background:var(--paper);padding:2rem 0 2.5rem;font-size:.92rem}
-footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+footer{background:var(--paper);color:var(--ink);padding:2rem 0 2.5rem;margin-top:0;font-size:.92rem}
 footer img{width:130px}
 footer p{color:rgba(16,24,32,.75)}
+footer a{color:var(--beet)}
 
 /* ---------- responsive ---------- */
 @media (max-width:860px){
@@ -222,7 +168,7 @@ footer p{color:rgba(16,24,32,.75)}
 <body>
 
 <header>
-  <div class="wrap nav">
+  <div class="nav">
     <a href="#top" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
     <nav aria-label="Main">
       <ul>
@@ -243,7 +189,7 @@ footer p{color:rgba(16,24,32,.75)}
       <div>
         <p class="eyebrow">A community co-operative in Kentish Town · Since 2012</p>
         <h1>Seasonal organic veg, every week, <span>from £9</span>.</h1>
-        <p class="lede">A not-for-profit co-operative, packing bags of organic produce from local UK farms, delivering to collection points across Camden and Islington. Run by our members, and proudly rooted in north London since 2012.</p>
+        <p class="lede">A not-for-profit co-operative, packing bags of organic produce from local UK farms, delivering to collection points across Camden and Islington. Run by our members, and proudly rooted in North London since 2012.</p>
         <a class="btn" href="signup.html">Join the scheme</a>
         <a class="btn ghost" href="#how">How it works</a>
       </div>

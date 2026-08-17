@@ -5,39 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About us – Kentish Town Vegbox</title>
 <meta name="description" content="Kentish Town Vegbox is a community-owned co-operative, est. 2012, connecting Camden and Islington with sustainably grown fruit and veg direct from UK farmers.">
+<link rel="stylesheet" href="styles.css">
 <style>
-@font-face{font-family:'New Spirit';src:url('fonts/new_spirit_bold.woff2') format('woff2');font-weight:700;font-display:swap}
-@font-face{font-family:'Chaloops';src:url('fonts/chaloops_bold.woff2') format('woff2');font-weight:700;font-display:swap}
-@font-face{font-family:'Six Hands';src:url('fonts/six_hands_marker.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
-:root{
-  --ink:#101820;--beet:#8F2147;--green:#2F3B08;--yellow:#E2D028;--orange:#F7A031;
-  --sage:#A5C28D;--paper:#F2F0EB;--card:#FBFAF7;
-  --display:'New Spirit',serif;--fun:'Chaloops',cursive;--hand:'Six Hands',cursive;--body:'Work Sans',sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;position:relative}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
-a{color:var(--beet)}
-a:focus-visible{outline:3px solid var(--beet);outline-offset:2px;border-radius:2px}
-img{max-width:100%;height:auto;display:block}
-.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
-header{background:var(--paper)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;gap:1.25rem;flex-wrap:wrap}
-.nav img{width:170px}
-nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center}
-nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
-nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
-nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
-nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
-main{padding:3rem 0 4.5rem}
-.sub{font-family:var(--fun);font-size:1.1rem;color:var(--beet);margin-bottom:.5rem}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.7rem);margin-bottom:1rem}
-h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin:3rem 0 1rem}
 .lede{font-size:1.15rem;max-width:40em;margin-bottom:1rem}
 main p{max-width:44em;margin-bottom:1rem}
 .photo{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);margin:1.25rem 0;max-width:640px;width:100%}
@@ -60,13 +29,7 @@ figure.ph figcaption{font-family:var(--hand);font-size:1.05rem;color:var(--green
 .person p{font-size:.93rem;color:rgba(16,24,32,.85);margin:0;text-align:left}
 .cta-band{margin-top:3.5rem;background:var(--card);border-radius:8px;padding:2rem;box-shadow:5px 7px 0 rgba(16,24,32,.14);max-width:46em}
 .cta-band h2{font-family:var(--display);font-weight:700;font-size:1.4rem;margin-bottom:.5rem}
-.btn{display:inline-block;background:var(--beet);color:#fff;font-family:var(--fun);font-size:1.05rem;text-decoration:none;padding:.8rem 1.7rem;border-radius:999px;border:2.5px solid var(--beet);margin-top:.85rem}
-.btn:hover{background:transparent;color:var(--beet)}
-footer{background:var(--green);color:#fff;padding:2rem 0;margin-top:3rem}
-footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
-footer img{width:170px}
-footer p{color:rgba(255,255,255,.85)}
-footer a{color:#fff}
+.btn{margin-top:.85rem}
 @media (max-width:900px){.board{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.values,.board{grid-template-columns:1fr}}
 </style>
@@ -74,7 +37,7 @@ footer a{color:#fff}
 <body>
 
 <header>
-  <div class="wrap nav">
+  <div class="nav">
     <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
     <nav aria-label="Main">
       <ul>

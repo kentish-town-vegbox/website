@@ -1,0 +1,88 @@
+/* ===================================================================
+   Kentish Town Vegbox – shared stylesheet
+   Foundation used by every page: brand fonts, palette, reset, base
+   elements, header/nav, common headings, buttons and footer.
+   Page-specific layout stays in each page's inline <style>.
+   =================================================================== */
+
+/* ---------- brand fonts ---------- */
+@font-face{font-family:'New Spirit';src:url('fonts/new_spirit_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Chaloops';src:url('fonts/chaloops_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Six Hands';src:url('fonts/six_hands_marker.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+
+/* ---------- brand palette (Vegbox Brand Manual §2) ---------- */
+:root{
+  --ink:#101820;        /* Black 6C */
+  --beet:#8F2147;       /* 7015C – primary */
+  --green:#2F3B08;      /* 5747CP */
+  --yellow:#E2D028;     /* 116C */
+  --orange:#F7A031;     /* 178C */
+  --sage:#A5C28D;
+  --paper:#F2F0EB;
+  --card:#FBFAF7;
+  --display:'New Spirit',serif;
+  --fun:'Chaloops',cursive;
+  --hand:'Six Hands',cursive;
+  --body:'Work Sans',sans-serif;
+}
+
+/* ---------- reset ---------- */
+*{margin:0;padding:0;box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ---------- base elements ---------- */
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  position:relative;
+}
+/* paper texture overlay (Brand Manual §4.3) */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;
+  opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:var(--beet)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--beet);outline-offset:2px;border-radius:2px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+
+/* ---------- header / nav ---------- */
+header{background:var(--paper)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;max-width:1080px;margin:0 auto;padding:1.1rem 1.25rem}
+.nav img{width:170px}
+nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
+nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
+nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
+.nav a.back{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+.nav a.back:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- content pages ---------- */
+main{padding:3rem 0 4.5rem}
+
+/* ---------- common headings ---------- */
+.sub{font-family:var(--fun);font-size:1.1rem;color:var(--beet);margin-bottom:.5rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.7rem);margin-bottom:1rem}
+h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin:3rem 0 1rem}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-block;background:var(--beet);color:#fff;font-family:var(--fun);font-size:1.05rem;text-decoration:none;padding:.8rem 1.7rem;border-radius:999px;border:2.5px solid var(--beet)}
+.btn:hover{background:transparent;color:var(--beet)}
+
+/* ---------- footer (green – the default on content pages) ---------- */
+footer{background:var(--green);color:#fff;padding:2rem 0;margin-top:3rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center;max-width:1080px}
+footer img{width:170px}
+footer p{color:rgba(255,255,255,.85)}
+footer a{color:#fff}
