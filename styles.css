@@ -80,9 +80,26 @@ h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.2vw,2
 .btn{display:inline-block;background:var(--beet);color:#fff;font-family:var(--fun);font-size:1.05rem;text-decoration:none;padding:.8rem 1.7rem;border-radius:999px;border:2.5px solid var(--beet)}
 .btn:hover{background:transparent;color:var(--beet)}
 
-/* ---------- footer (green – the default on content pages) ---------- */
-footer{background:var(--green);color:#fff;padding:2rem 0;margin-top:3rem}
-footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:flex-end;max-width:1080px}
-footer img{width:170px}
-footer p{color:rgba(255,255,255,.85)}
-footer a{color:#fff}
+/* ---------- footer (light-green, continues the trees hill) ---------- */
+/* The trees graphic is transparent above the hill; its hill green (#7BAA53)
+   flows seamlessly into the footer below. Dark ink text keeps it readable. */
+.trees img{width:100%;max-width:none;display:block}
+footer{background:#A6B987;color:var(--ink);padding:2.5rem 0 2.5rem;margin-top:0;font-size:.98rem}
+.footer-grid{display:grid;grid-template-columns:1fr auto auto auto;gap:1.75rem 2.5rem;align-items:start;}
+.footer-brand img{width:180px}
+.footer-brand p{max-width:28em;margin-top:1em;text-wrap:balance;color:rgba(16,24,32,.85)}
+.footer-contact a{font-weight:500;}
+.footer-col h2{font-family:var(--fun);font-weight:400;font-size:1.2rem;color:var(--beet);margin-bottom:.6rem}
+.footer-col ul{display:block;list-style:none}
+.footer-col li{padding:.22rem 0}
+footer a{color:var(--ink);text-decoration:none}
+footer a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:3px}
+.footer-base{margin-top:2rem;padding-top:1.2rem;border-top:1.5px solid rgba(16,24,32,.18);font-size:.9rem}
+.footer-base p{color:rgba(16,24,32,.68)}
+@media (max-width:760px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-brand{grid-column:1/-1}
+}
+@media (max-width:460px){
+  .footer-grid{grid-template-columns:1fr}
+}

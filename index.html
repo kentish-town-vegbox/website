@@ -156,15 +156,6 @@ h2.sec{font-size:clamp(1.75rem,3.6vw,2.4rem);margin:0 0 1.75rem}
 .join p{max-width:44em;margin-bottom:1rem}
 .join .btn{margin-top:.75rem}
 
-/* footer – paper variant (overrides the shared green footer) */
-.trees{background:var(--paper)}
-.trees img{width:100%;max-width:none}
-footer{background:#7BAA53;color:var(--paper);padding:2rem 0 2.5rem;margin-top:0;font-size:.92rem}
-footer img{width:130px}
-footer a{color:var(--card)}
-footer p:first-of-type{text-align: center;}
-footer p:last-of-type{text-align: right;}
-
 /* ---------- responsive ---------- */
 @media (max-width:860px){
   .hero{padding-top:3rem}
@@ -412,11 +403,44 @@ footer p:last-of-type{text-align: right;}
   <img src="images/trees.webp" alt="">
 </div>
 <footer>
-  <div class="wrap">
-    <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
-    <p>A not-for-profit community co-operative<br>
-    <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> · <a href="tel:+447815771939">07815 771 939</a></p>
-    <p><a href="https://kentishtownvegbox.substack.com/" target="_blank">Newsletter</a><br/><a href="https://www.facebook.com/KentishTownVegbox/" target="_blank">Facebook</a> · <a href="https://www.instagram.com/kentishtownvegbox/" target="_blank">Instagram</a></p>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
+      <p>A not-for-profit community co-operative, growing good food and good company in North London since 2012.</p>
+      <p class="footer-contact">
+        <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a><br>
+        <a href="tel:+447815771939">07815 771 939</a>
+      </p>
+    </div>
+    <nav class="footer-col" aria-label="About the co-op">
+      <h2>The co-op</h2>
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Get involved">
+      <h2>Get involved</h2>
+      <ul>
+        <li><a href="signup.html">Sign up</a></li>
+        <li><a href="index.html#collect">Collection points</a></li>
+        <li><a href="index.html#visit">Volunteer</a></li>
+        <li><a href="solidarity-fund.html">Solidarity Fund</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Stay in touch">
+      <h2>Stay in touch</h2>
+      <ul>
+        <li><a href="https://kentishtownvegbox.substack.com/" target="_blank" rel="noopener">Newsletter</a></li>
+        <li><a href="https://www.facebook.com/KentishTownVegbox/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/kentishtownvegbox/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Kentish Town Vegbox &middot; A community co-operative serving Camden &amp; Islington</p>
   </div>
 </footer>
 
