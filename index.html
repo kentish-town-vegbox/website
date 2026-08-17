@@ -45,8 +45,10 @@ h1 span{color:var(--beet)}
 .note-tabs button{font-family:var(--hand);font-size:1.05rem;background:transparent;border:none;border-bottom:2.5px solid transparent;color:rgba(16,24,32,.5);cursor:pointer;padding:.1rem .45rem}
 .note-tabs button[aria-selected="true"]{color:var(--beet);border-bottom-color:var(--beet)}
 .note-tabs button:hover{color:var(--beet)}
-.note-card ul{transition:opacity .18s ease, transform .18s ease}
-.note-card ul.turning{opacity:0;transform:rotate(-.7deg) translateY(3px)}
+.note-lists{display:grid}
+.note-panel{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .2s ease}
+.note-panel.active{opacity:1;visibility:visible}
+@media (prefers-reduced-motion:reduce){.note-panel{transition:none}}
 
 /* ---------- sections ---------- */
 section{padding:4rem 0}
@@ -198,13 +200,12 @@ footer a{color:var(--beet)}
         <h2>In the bag this week</h2>
         <p class="note-date" id="bagDate" hidden></p>
         <div class="note-tabs" role="tablist" aria-label="Bag size">
-          <button role="tab" data-bag="Small" aria-selected="false">Small</button>
-          <button role="tab" data-bag="Standard" aria-selected="true">Standard</button>
-          <button role="tab" data-bag="Family" aria-selected="false">Family</button>
-          <button role="tab" data-bag="Mega" aria-selected="false">Mega</button>
+          <button role="tab" id="tab-Small" data-bag="Small" aria-controls="panel-Small" aria-selected="false" tabindex="-1">Small</button>
+          <button role="tab" id="tab-Standard" data-bag="Standard" aria-controls="panel-Standard" aria-selected="true" tabindex="0">Standard</button>
+          <button role="tab" id="tab-Family" data-bag="Family" aria-controls="panel-Family" aria-selected="false" tabindex="-1">Family</button>
+          <button role="tab" id="tab-Mega" data-bag="Mega" aria-controls="panel-Mega" aria-selected="false" tabindex="-1">Mega</button>
         </div>
-        <ul id="bagList"></ul>
-        <p class="foot" id="bagFoot"></p>
+        <div class="note-lists" id="bagLists"></div>
       </aside>
     </div>
   </div>
@@ -492,55 +493,85 @@ footer a{color:var(--beet)}
       Mega: [ { item: 'Rhubarb', farm: 'Bedlam Farms, Cambs' } ]
     }
   };
-  var list = document.getElementById('bagList');
-  var foot = document.getElementById('bagFoot');
+  var lists = document.getElementById('bagLists');
   var dateEl = document.getElementById('bagDate');
-  var tabs = document.querySelectorAll('.note-tabs button');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.note-tabs button'));
+  var order = ['Small', 'Standard', 'Family', 'Mega'];
   var current = 'Standard';
 
-  function render(bag){
-    var rows = data.bags[bag] || [];
-    list.innerHTML = '';
-    rows.forEach(function(r){
-      var li = document.createElement('li');
-      li.appendChild(document.createTextNode(r.item + ' '));
-      if (r.farm) {
-        var sp = document.createElement('span');
-        sp.textContent = r.farm;
-        li.appendChild(sp);
-      }
-      list.appendChild(li);
-    });
+  function footText(bag){
     var fruit = ((data.fruit || {})[bag] || []).map(function(f){ return f.item; }).join(', ');
     if (bag === 'Mega') {
-      foot.textContent = fruit ? 'fruit included \u00b7 this week: ' + fruit : 'fruit included';
-    } else {
-      foot.textContent = fruit ? '+ fruit option this week: ' + fruit : 'seasonal \u00b7 organic \u00b7 packed with care';
+      return fruit ? 'fruit included \u00b7 this week: ' + fruit : 'fruit included';
     }
+    return fruit ? '+ fruit option this week: ' + fruit : 'seasonal \u00b7 organic \u00b7 packed with care';
+  }
+  function build(){
+    lists.innerHTML = '';
+    order.forEach(function(bag){
+      var panel = document.createElement('div');
+      panel.className = 'note-panel' + (bag === current ? ' active' : '');
+      panel.id = 'panel-' + bag;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', 'tab-' + bag);
+      panel.setAttribute('tabindex', bag === current ? '0' : '-1');
+
+      var ul = document.createElement('ul');
+      (data.bags[bag] || []).forEach(function(r){
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(r.item + ' '));
+        if (r.farm) {
+          var sp = document.createElement('span');
+          sp.textContent = r.farm;
+          li.appendChild(sp);
+        }
+        ul.appendChild(li);
+      });
+      panel.appendChild(ul);
+
+      var foot = document.createElement('p');
+      foot.className = 'foot';
+      foot.textContent = footText(bag);
+      panel.appendChild(foot);
+
+      lists.appendChild(panel);
+    });
     if (data.date) { dateEl.textContent = data.date; dateEl.hidden = false; }
   }
-
+  function select(bag){
+    current = bag;
+    tabs.forEach(function(b){
+      var on = b.getAttribute('data-bag') === bag;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.setAttribute('tabindex', on ? '0' : '-1');
+    });
+    Array.prototype.forEach.call(lists.children, function(panel){
+      var on = panel.id === 'panel-' + bag;
+      panel.classList.toggle('active', on);
+      panel.setAttribute('tabindex', on ? '0' : '-1');
+    });
+  }
   tabs.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      if (btn.getAttribute('data-bag') === current) return;
-      current = btn.getAttribute('data-bag');
-      tabs.forEach(function(b){ b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
-      list.classList.add('turning');
-      setTimeout(function(){
-        render(current);
-        list.classList.remove('turning');
-      }, 180);
+    btn.addEventListener('click', function(){ select(btn.getAttribute('data-bag')); });
+    btn.addEventListener('keydown', function(e){
+      var idx = order.indexOf(btn.getAttribute('data-bag'));
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (idx + 1) % order.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (idx - 1 + order.length) % order.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = order.length - 1;
+      if (next !== null) { e.preventDefault(); select(order[next]); tabs[next].focus(); }
     });
   });
 
-  render(current);
+  build();
 
   fetch('/api/bag')
     .then(function(r){ return r.json(); })
     .then(function(res){
       if (res.ok && res.bags && Object.keys(res.bags).length) {
         data = { date: res.date || '', bags: res.bags, fruit: res.fruit || {} };
-        render(current);
+        build();
       }
     })
     .catch(function(){ /* keep the baked-in list */ });
