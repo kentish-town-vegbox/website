@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQs – Kentish Town Vegbox</title>
+<meta name="description" content="Frequently asked questions about Kentish Town Vegbox – holidays, muddy veg, packaging, home delivery, prices and volunteering.">
+<style>
+@font-face{font-family:'New Spirit';src:url('fonts/new_spirit_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Chaloops';src:url('fonts/chaloops_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+  --ink:#101820;--beet:#8F2147;--green:#2F3B08;--yellow:#E2D028;--orange:#F7A031;
+  --paper:#F2F0EB;--card:#FBFAF7;
+  --display:'New Spirit',serif;--fun:'Chaloops',cursive;--body:'Work Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;position:relative}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--beet)}
+a:focus-visible{outline:3px solid var(--beet);outline-offset:2px;border-radius:2px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:820px;margin:0 auto;padding:0 1.25rem}
+header{background:var(--paper)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;gap:1.25rem;flex-wrap:wrap;max-width:1080px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem}
+.nav img{width:170px}
+nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
+nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
+nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
+main{padding:3rem 0 4.5rem}
+.sub{font-family:var(--fun);font-size:1.1rem;color:var(--beet);margin-bottom:.5rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.7rem);margin-bottom:1rem}
+.lede{font-size:1.15rem;max-width:40em;margin-bottom:2rem}
+details{background:var(--card);border-radius:8px;box-shadow:5px 7px 0 rgba(16,24,32,.12);margin-bottom:1.1rem;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:1.15rem 1.35rem;font-family:var(--display);font-weight:700;font-size:1.1rem;position:relative;padding-right:3rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:1.35rem;top:50%;transform:translateY(-50%);font-family:var(--fun);font-size:1.4rem;color:var(--beet)}
+details[open] summary::after{content:"\2013"}
+summary:hover{color:var(--beet)}
+details .a{padding:0 1.35rem 1.25rem}
+details .a p{margin-bottom:.85rem}
+details .a p:last-child{margin-bottom:0}
+details .a ul{margin:0 0 .85rem 1.25rem}
+details .a li{margin-bottom:.4rem}
+.still{margin-top:2.5rem;background:var(--card);border-radius:8px;padding:1.75rem;box-shadow:5px 7px 0 rgba(16,24,32,.14)}
+.still h2{font-family:var(--display);font-weight:700;font-size:1.35rem;margin-bottom:.5rem}
+footer{background:var(--green);color:#fff;padding:2rem 0;margin-top:3rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center;max-width:1080px}
+footer img{width:170px}
+footer p{color:rgba(255,255,255,.85)}
+footer a{color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="faq.html" aria-current="page">FAQs</a></li>
+        <li><a class="cta" href="signup.html">Sign up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="sub">Ask us anything</p>
+    <h1>Frequently asked questions</h1>
+    <p class="lede">Click a question to read the answer. Can't find what you're after? Email us at <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a>.</p>
+
+    <details>
+      <summary>Why should I choose Kentish Town Vegbox?</summary>
+      <div class="a">
+        <ul>
+          <li>All our fruit and vegetables are sourced as locally as possible.</li>
+          <li>We're a co-operative, not run for profit – any surplus is re-invested in the organisation, the community, or other local food projects.</li>
+          <li>We're focused on supporting small-scale, sustainable farmers in the London hinterland.</li>
+          <li>The scheme is run by and for our local community in Kentish Town and the surrounding areas.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>What happens if I'm away on holiday?</summary>
+      <div class="a">
+        <p>If you want to stop your bag for one or more weeks, just email <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> with at least one week's notice, and we'll stop your bag and refund you.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why are some veg so muddy?</summary>
+      <div class="a">
+        <p>The vegetables are freshly harvested at the farms and delivered straight to us, so they're often still muddy when we receive them. Having them washed at the farm would bump up the price – and muddy veg actually keep for longer than washed veg!</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why do you use plastic?</summary>
+      <div class="a">
+        <p>Over a third of all food produced worldwide is wasted – a huge waste of water, land, energy and labour, with all the greenhouse gas emissions that go with it. Good packaging is one way food can be kept fresh for longer and waste reduced: leafy veg and salads start to dehydrate and wilt as soon as they're picked, and packaging slows that down by keeping the air around them humid.</p>
+        <p>We deliver produce to you in the packaging we receive it in, use paper bags where possible (for delicate veg like mushrooms), and encourage our suppliers to look for more environmental packaging solutions as they become available.</p>
+        <p>Please return all packaging – plastic bags, fruit punnets, paper bags and the nylon Vegbags – to your collection point so we can reuse it.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I opt out of a certain vegetable?</summary>
+      <div class="a">
+        <p>As a very small scheme, we don't have the logistical capability to offer opt-outs for specific vegetables. Some collection points have swap boxes where you can leave unwanted veg – or try some of our newsletter recipes and see if we can change your mind! Because our vegetables come directly from the farms, they're fresher and keep longer than supermarket produce, so even a glut of potatoes or onions should last until you can use it up.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I have a bag every other week?</summary>
+      <div class="a">
+        <p>Some items – carrots, potatoes and onions – alternate weekly, so a fortnightly bag may mean getting the same things every time. We can accommodate fortnightly bags though, if it works for you.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can you deliver to my house?</summary>
+      <div class="a">
+        <p>For an extra £3 fee, we can home-deliver your veg bag via our partner bike couriers, <a href="https://nekohomedelivery.com/">Neko Home Delivery</a>.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What if I'm missing an item or have a problem with my bag?</summary>
+      <div class="a">
+        <p>Let us know by email at <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> if you're missing an item, and we'll make sure you're refunded the appropriate amount. Any other problems, tell us and we'll try to resolve them as soon as possible.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why isn't the produce as cheap as supermarket organic fruit and veg?</summary>
+      <div class="a">
+        <p>We run a fair-trade supply chain! Farmers receive just 10% of the customer pound in the supermarket-driven system – in our veg box scheme, they receive 60%.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I come and pack vegetables?</summary>
+      <div class="a">
+        <p>We're always looking for new volunteers to help with packing on a Wednesday at The Thanet Community Centre in Kentish Town. It's fun, sociable and out in the fresh air (with a canopy for when it rains), and you can come as often or as little as you like.</p>
+        <p>Regular volunteers get discounted veg: 20% off if you help once a month, 50% off twice a month, or a free bag if you help every week.</p>
+        <p>We also hold an AGM every year for all our members, where we elect the Board of Directors. Email <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> to find out more.</p>
+      </div>
+    </details>
+
+    <div class="still">
+      <h2>Still have questions?</h2>
+      <p>We work part time on Vegbox, so we may not pick up the phone when you ring – but leave a message and we'll get back to you as soon as we can. Email <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> or call 07815 771 939.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="images/logo_white.svg" alt="Kentish Town Vegbox, est. 2012">
+    <p>A not-for-profit community co-operative<br>
+    <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> · 07815 771 939</p>
+  </div>
+</footer>
+
+</body>
+</html>

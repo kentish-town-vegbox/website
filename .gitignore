@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Cloudflare Wrangler / Pages local artifacts
+.wrangler/
+
+# Local secrets & env
+.dev.vars
+.dev.vars.*
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*

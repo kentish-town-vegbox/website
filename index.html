@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kentish Town Vegbox – local organic fruit &amp; veg, delivered weekly</title>
+<meta name="description" content="Kentish Town Vegbox is a not-for-profit community co-operative supplying weekly bags of local organic fruit and vegetables to collection points across Camden and Islington. Est. 2012.">
+<style>
+/* ---------- brand fonts ---------- */
+@font-face{font-family:'New Spirit';src:url('fonts/new_spirit_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Chaloops';src:url('fonts/chaloops_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Six Hands';src:url('fonts/six_hands_marker.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+
+/* ---------- brand palette (Vegbox Brand Manual §2) ---------- */
+:root{
+  --ink:#101820;        /* Black 6C */
+  --beet:#8F2147;       /* 7015C – primary */
+  --green:#2F3B08;      /* 5747CP */
+  --yellow:#E2D028;     /* 116C */
+  --orange:#F7A031;     /* 178C */
+  --paper:#F2F0EB;
+  --card:#FBFAF7;
+  --display:'New Spirit',serif;
+  --fun:'Chaloops',cursive;
+  --hand:'Six Hands',cursive;
+  --body:'Work Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:1.0625rem;
+  line-height:1.65;
+  position:relative;
+}
+/* paper texture overlay (Brand Manual §4.3) */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:999;
+  opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:var(--beet)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--beet);outline-offset:3px;border-radius:2px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+
+/* ---------- header ---------- */
+header{background:var(--paper)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;gap:1.25rem;flex-wrap:wrap}
+.nav img{width:170px}
+nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
+nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
+nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
+
+/* ---------- hero (yellow, like the welcome pack) ---------- */
+.hero{background:var(--yellow);padding:4rem 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center;padding-bottom:3rem}
+.eyebrow{font-family:var(--fun);font-size:1.05rem;letter-spacing:.02em;color:var(--green);margin-bottom:.9rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2.3rem,5.2vw,3.7rem);line-height:1.07;margin-bottom:1.2rem;color:var(--ink)}
+h1 span{color:var(--beet)}
+.hero p.lede{font-size:1.18rem;max-width:32em;margin-bottom:1.9rem}
+.btn{display:inline-block;background:var(--beet);color:#fff;text-decoration:none;font-family:var(--fun);font-size:1.05rem;padding:.8rem 1.7rem;border-radius:999px;border:2.5px solid var(--beet)}
+.btn:hover{background:transparent;color:var(--beet)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink);margin-left:.6rem}
+.btn.ghost:hover{border-color:var(--beet);color:var(--beet)}
+
+/* ---------- bag ticket note card ---------- */
+.note-card{
+  background:var(--card);border-radius:6px;
+  box-shadow:5px 7px 0 rgba(16,24,32,.14);
+  padding:1.6rem 1.5rem 1.7rem;position:relative;
+  transform:rotate(1.7deg);width:100%;max-width:430px;justify-self:center;
+}
+.note-card::before{
+  content:"";position:absolute;top:-13px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:88px;height:26px;background:rgba(230,220,195,.85);
+  box-shadow:0 1px 2px rgba(16,24,32,.15);
+}
+.note-card h2{font-family:var(--hand);font-weight:400;font-size:1.5rem;text-align:center;margin-bottom:.9rem;color:var(--beet)}
+.note-card ul{list-style:none}
+.note-card li{display:flex;justify-content:space-between;gap:1rem;font-size:.95rem;padding:.34rem 0;border-bottom:1.5px dashed rgba(16,24,32,.2)}
+.note-card li:last-child{border-bottom:none}
+.note-card li span{font-family:var(--hand);font-size:1.02rem;color:var(--green);text-align:right}
+.note-card .foot{margin-top:.9rem;text-align:center;font-family:var(--hand);font-size:1.05rem;color:var(--green)}
+.note-date{text-align:center;font-family:var(--hand);font-size:1rem;color:rgba(16,24,32,.55);margin:-.5rem 0 .6rem}
+.note-tabs{display:flex;gap:.3rem;justify-content:center;margin-bottom:.8rem;flex-wrap:wrap}
+.note-tabs button{font-family:var(--hand);font-size:1.05rem;background:transparent;border:none;border-bottom:2.5px solid transparent;color:rgba(16,24,32,.5);cursor:pointer;padding:.1rem .45rem}
+.note-tabs button[aria-selected="true"]{color:var(--beet);border-bottom-color:var(--beet)}
+.note-tabs button:hover{color:var(--beet)}
+.note-card ul{transition:opacity .18s ease, transform .18s ease}
+.note-card ul.turning{opacity:0;transform:rotate(-.7deg) translateY(3px)}
+
+/* ---------- sections ---------- */
+section{padding:4rem 0}
+h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,3.6vw,2.4rem);margin-bottom:1.75rem}
+.sub{font-family:var(--fun);font-size:1.1rem;color:var(--beet);margin-bottom:.5rem}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:.5rem}
+.step .num{font-family:var(--fun);color:var(--orange);font-size:1.35rem;display:block;margin-bottom:.35rem}
+.step h3{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:.45rem}
+.photo-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+.photo-row img{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.section-photo{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);width:100%}
+.season-photo{margin:2rem auto 0;max-width:560px}
+.season-photo img{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);width:100%}
+.season-photo figcaption{font-family:var(--hand);font-size:1.05rem;color:var(--green);margin-top:.5rem}
+@media (max-width:640px){.photo-row{grid-template-columns:1fr}}
+.cycle-note{margin-top:2.25rem;background:var(--card);border-left:6px solid var(--orange);padding:1.1rem 1.35rem;border-radius:0 8px 8px 0;max-width:46em}
+
+/* bags – green section with white note cards */
+.bags-section{background:var(--green);color:var(--paper)}
+.bags-section h2.sec{color:var(--paper)}
+.bags-section .sub{color:var(--yellow)}
+.bags{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.75rem}
+.bag{background:var(--card);color:var(--ink);border-radius:6px;padding:1.5rem;box-shadow:5px 7px 0 rgba(16,24,32,.25)}
+.bags .bag:nth-child(odd){transform:rotate(-.8deg)}
+.bags .bag:nth-child(even){transform:rotate(.8deg)}
+.bag h3{font-family:var(--display);font-weight:700;font-size:1.35rem}
+.bag .photo{margin:-.4rem -.4rem .9rem;border-radius:6px;overflow:hidden;background:#fff}
+.bag .photo img{width:100%;display:block}
+.fruit-toggle{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fun);font-size:1.05rem;color:var(--yellow);cursor:pointer;margin-bottom:1.5rem;user-select:none}
+.fruit-toggle input{width:1.2rem;height:1.2rem;accent-color:var(--yellow);cursor:pointer}
+.veg-row{display:flex;align-items:flex-end;justify-content:center;gap:2.2rem;margin-top:2.5rem;flex-wrap:wrap}
+.veg-row img{height:64px;width:auto}
+.veg-row img:nth-child(odd){transform:rotate(-4deg)}
+.veg-row img:nth-child(even){transform:rotate(4deg)}
+/* seasonal strip */
+.season{padding:3rem 0;border-top:3px dashed rgba(16,24,32,.15);border-bottom:3px dashed rgba(16,24,32,.15)}
+.season .wrap{text-align:center}
+.season h2{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,1.9rem);margin-bottom:.25rem}
+.season .month{font-family:var(--fun);color:var(--beet);font-size:1.1rem;margin-bottom:1.75rem}
+.season-row{display:flex;justify-content:center;align-items:flex-end;gap:2.4rem;flex-wrap:wrap}
+.season-row figure{display:flex;flex-direction:column;align-items:center;gap:.45rem}
+.season-row img{height:82px;width:auto}
+.season-row figure:nth-child(odd) img{transform:rotate(-3deg)}
+.season-row figure:nth-child(even) img{transform:rotate(3deg)}
+.season-row figcaption{font-family:var(--hand);font-size:1.1rem;color:var(--green)}
+.bag .price{font-family:var(--fun);color:var(--beet);font-size:1.25rem;line-height:1.35;margin:.4rem 0 .7rem}
+.bag .price small{display:block;font-size:.95rem;color:var(--green)}
+.bag ul{list-style:none;font-size:.93rem}
+.bag li{padding:.14rem 0}
+.bags-section .after{margin-top:2rem;max-width:46em}
+.bags-section .after a{color:var(--yellow)}
+
+/* affordability – beet section */
+.fair{background:var(--beet);color:var(--paper)}
+.fair h2.sec{color:var(--paper)}
+.fair .sub{color:var(--orange)}
+.fair-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2.5rem;align-items:center}
+.fair p{max-width:36em;margin-bottom:1rem}
+.fair a{color:var(--yellow)}
+.fair img{max-width:340px;justify-self:center}
+
+/* collection */
+.collect-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.collect ul{list-style:none;margin-top:.5rem}
+.collect li{padding:.8rem 0;border-bottom:1.5px dashed rgba(16,24,32,.2);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.collect li b{font-weight:700}
+.collect li span{font-family:var(--hand);font-size:1.05rem;color:var(--green)}
+.collect .neko{margin-top:1.5rem;background:var(--card);border-left:6px solid var(--beet);padding:1.1rem 1.35rem;border-radius:0 8px 8px 0}
+.points-map{width:100%;height:480px;border:0;border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12)}
+
+/* visit / volunteer – yellow section */
+.visit{background:var(--yellow)}
+.visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:2.5rem;align-items:center}
+.visit img{max-width:300px;justify-self:center}
+.packing-montage{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(16,24,32,.12);justify-self:center;width:100%;max-width:480px}
+.packing-montage img{display:block;width:100%;height:100%;max-width:none;aspect-ratio:4/3;object-fit:cover}
+.visit p{max-width:36em;margin-bottom:1rem}
+.address{font-family:var(--hand);font-size:1.3rem;color:var(--beet)}
+
+/* reviews */
+.reviews{background:var(--paper)}
+.reviews .wrap{text-align:center}
+.rating-badge{display:flex;align-items:baseline;justify-content:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.35rem}
+.rating-badge .score{font-family:var(--fun);font-size:3.2rem;color:var(--beet);line-height:1}
+.stars{color:var(--orange);font-size:1.6rem;letter-spacing:.1em}
+.reviews .from{font-size:.98rem;color:rgba(16,24,32,.75);margin-bottom:2.25rem}
+.review-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.75rem;text-align:left;margin-bottom:2rem}
+.review-card{background:var(--card);border-radius:6px;padding:1.5rem;box-shadow:5px 7px 0 rgba(16,24,32,.14)}
+.review-cards .review-card:nth-child(odd){transform:rotate(-.7deg)}
+.review-cards .review-card:nth-child(even){transform:rotate(.7deg)}
+.review-card .r-stars{color:var(--orange);font-size:1rem;letter-spacing:.08em;margin-bottom:.6rem}
+.review-card p{font-size:.98rem}
+.review-card .who{font-family:var(--hand);font-size:1.15rem;color:var(--green);margin-top:.8rem}
+.reviews .btn.ghost{margin-left:.6rem}
+/* join */
+.join p{max-width:44em;margin-bottom:1rem}
+.join .btn{margin-top:.75rem}
+
+/* footer */
+.trees{background:var(--paper)}
+.trees img{width:100%;max-width:none}
+footer{background:var(--paper);padding:2rem 0 2.5rem;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+footer img{width:130px}
+footer p{color:rgba(16,24,32,.75)}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .hero{padding-top:3rem}
+  .hero-grid,.fair-grid,.collect-grid,.visit-grid{grid-template-columns:1fr;gap:2.25rem}
+  .note-card{justify-self:start}
+  .steps{grid-template-columns:1fr}
+  .btn.ghost{margin-left:0;margin-top:.6rem}
+  .fair img,.visit img{justify-self:start}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a class="cta" href="signup.html">Sign up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">A community co-operative in Kentish Town · Since 2012</p>
+        <h1>Seasonal organic veg, every week, <span>from £9</span>.</h1>
+        <p class="lede">A not-for-profit co-operative, packing bags of organic produce from local UK farms, delivering to collection points across Camden and Islington. Run by our members, and proudly rooted in north London since 2012.</p>
+        <a class="btn" href="signup.html">Join the scheme</a>
+        <a class="btn ghost" href="#how">How it works</a>
+      </div>
+
+      <aside class="note-card" aria-label="This week's bag contents">
+        <h2>In the bag this week</h2>
+        <p class="note-date" id="bagDate" hidden></p>
+        <div class="note-tabs" role="tablist" aria-label="Bag size">
+          <button role="tab" data-bag="Small" aria-selected="false">Small</button>
+          <button role="tab" data-bag="Standard" aria-selected="true">Standard</button>
+          <button role="tab" data-bag="Family" aria-selected="false">Family</button>
+          <button role="tab" data-bag="Mega" aria-selected="false">Mega</button>
+        </div>
+        <ul id="bagList"></ul>
+        <p class="foot" id="bagFoot"></p>
+      </aside>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <p class="sub">Simple as 1, 2, 3</p>
+      <h2 class="sec">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1. Choose</span>
+          <h3>Pick your bag</h3>
+          <p>Become a member and choose from four bag sizes, with or without a weekly fruit bag alongside. Membership is open to everyone.</p>
+        </div>
+        <div class="step">
+          <span class="num">2. We pack</span>
+          <h3>Fresh from the farm</h3>
+          <p>Our farmers harvest early in the week and deliver to our packing yard, where the team packs everything into reusable bags on Wednesday morning.</p>
+        </div>
+        <div class="step">
+          <span class="num">3. Collect</span>
+          <h3>From a point near you</h3>
+          <p>We text you when your bag reaches your local collection point on Wednesday. Collect it by Friday, and return your reusable bag from the week before.</p>
+        </div>
+      </div>
+      <div class="photo-row">
+        <img src="images/site/packing_pair.webp" alt="Two Vegbox members in the packing yard, one holding a bunch of carrots, in front of a colourful mural">
+        <img src="images/site/bags_in_shed.webp" alt="A collection shed filled with labelled Vegbox bags in orange, yellow, green, brown and blue, ready to collect">
+      </div>
+      <p class="cycle-note">Going away? Just email us by Wednesday with a week's notice and we'll pause your bag and refund you. Any uncollected veg goes to local community food schemes and food banks – nothing is wasted.</p>
+      <p style="margin-top:1.75rem"><a class="btn" href="signup.html">Sign up now</a></p>
+    </div>
+  </section>
+
+  <div class="season" aria-label="What's in season">
+    <div class="wrap">
+      <h2>What's in season</h2>
+      <p class="month">right now, in July</p>
+      <div class="season-row">
+        <figure><img src="images/cherries.webp" alt=""><figcaption>cherries</figcaption></figure>
+        <figure><img src="images/courgettes.webp" alt=""><figcaption>courgettes</figcaption></figure>
+        <figure><img src="images/broad_beans.webp" alt=""><figcaption>broad beans</figcaption></figure>
+        <figure><img src="images/globe_artichoke.webp" alt=""><figcaption>globe artichokes</figcaption></figure>
+        <figure><img src="images/fennel.webp" alt=""><figcaption>fennel</figcaption></figure>
+        <figure><img src="images/chard.webp" alt=""><figcaption>chard</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <section id="bags" class="bags-section">
+    <div class="wrap">
+      <h2 class="sec">Our veg bags</h2>
+      <label class="fruit-toggle"><input type="checkbox" id="fruitToggle"> show the bags with fruit</label>
+      <div class="bags">
+        <div class="bag">
+          <div class="photo"><img class="bag-img" data-plain="images/bag_small.webp" data-fruit="images/bag_small_fruit.webp" src="images/bag_small.webp" alt="The contents of a Small bag laid out: cavolo nero, potatoes, onions, tomatoes and garlic"></div>
+          <h3>Small</h3>
+          <p class="price">£9 / week <small>£11.65 with fruit</small></p>
+          <ul>
+            <li>For 1 person</li>
+            <li>4 varieties of produce</li>
+          </ul>
+        </div>
+        <div class="bag">
+          <div class="photo"><img class="bag-img" data-plain="images/bag_standard.webp" data-fruit="images/bag_standard_fruit.webp" src="images/bag_standard.webp" alt="The contents of a Standard bag laid out: cavolo nero, potatoes, tomatoes, onions and garlic"></div>
+          <h3>Standard</h3>
+          <p class="price">£12 / week <small>£15.50 with fruit</small></p>
+          <ul>
+            <li>For 1–2 people</li>
+            <li>5 varieties of produce</li>
+          </ul>
+        </div>
+        <div class="bag">
+          <div class="photo"><img class="bag-img" data-plain="images/bag_family.webp" data-fruit="images/bag_family_fruit.webp" src="images/bag_family.webp" alt="The contents of a Family bag laid out: lettuce, chard, potatoes, tomatoes, onions and garlic"></div>
+          <h3>Family</h3>
+          <p class="price">£16.50 / week <small>£20.80 with fruit</small></p>
+          <ul>
+            <li>For 3–4 people</li>
+            <li>6 varieties of produce</li>
+          </ul>
+        </div>
+        <div class="bag">
+          <div class="photo"><img src="images/bag_mega.webp" alt="The contents of a Mega bag laid out: potatoes, asparagus, strawberries, tomatoes, lettuce, chard, onions and garlic"></div>
+          <h3>Mega</h3>
+          <p class="price">£26 / week <small>fruit included</small></p>
+          <ul>
+            <li>For 4+ people</li>
+            <li>9 varieties of produce</li>
+          </ul>
+        </div>
+      </div>
+      <p class="after">Almost all of our fruit and veg comes from small-scale organic farms in southeast England – local and, by default, seasonal. As a not-for-profit co-operative, any surplus we make is reinvested in the organisation, the community, or other local food projects.</p>
+    </div>
+  </section>
+
+  <section id="fair" class="fair">
+    <div class="wrap fair-grid">
+      <div>
+        <p class="sub">Good food for everyone</p>
+        <h2 class="sec">Affordable by design</h2>
+        <p>We believe everyone should have access to fresh, seasonal, organic produce, so we work hard to keep our bags affordable and accessible. We accept Healthy Start vouchers, offer a 20% low-income discount, and will deliver bags to people who are unable to leave their home to collect them.</p>
+        <p>Our <strong>Solidarity Fund</strong>, supported by members who can afford a little more, quietly subsidises bags for neighbours who need it. To contribute or to ask for support, <a href="#join">get in touch</a> – no forms, no fuss.</p>
+      </div>
+      <img class="section-photo" src="images/site/collection_pickup.webp" alt="Two smiling volunteers crouched beside a row of colourful Vegbox bags at a collection point">
+    </div>
+  </section>
+
+  <section id="collect" class="collect">
+    <div class="wrap collect-grid">
+      <div>
+        <p class="sub">Every Wednesday</p>
+        <h2 class="sec">Collection points</h2>
+        <p>Bags are delivered on Wednesday to over twenty collection points dotted across Kentish Town, Camden, Islington and beyond – from Camden Market to Highgate, King's Cross to Finsbury Park. Find your nearest on the map, and pick it when you sign up.</p>
+        <p class="neko">Can't get to a collection point? For an extra £3 we can home-deliver your bag via our partner bike couriers, <a href="https://nekohomedelivery.com/">Neko Home Delivery</a>.</p>
+      </div>
+      <iframe class="points-map" src="https://www.google.com/maps/d/embed?mid=10luRpJhs4NFp4zj9tdXIoqsE7MIODyLC&ehbc=2E312F" title="Map of Vegbox collection points" loading="lazy" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="visit" class="visit">
+    <div class="wrap visit-grid">
+      <div class="packing-montage">
+        <img src="images/site/packing_montage_1.webp" alt="Weighing produce into a bowl at the Vegbox packing yard, in front of a colourful mural">
+        <img src="images/site/packing_montage_2.webp" alt="Two volunteers weighing strawberries at the packing table">
+        <img src="images/site/packing_montage_4.webp" alt="Four volunteers at the packing yard gate holding leeks, pears and a squash">
+        <img src="images/site/packing_montage_3.webp" alt="A busy, sunny Wednesday packing session in the yard">
+      </div>
+      <div>
+        <p class="sub">Come and say hello</p>
+        <h2 class="sec">Visit the packing yard</h2>
+        <p class="address">The Thanet, Herbert Street, Kentish Town, NW5 4HD</p>
+        <p>We're there every Wednesday from 9am to 3pm packing the week's fruit and veg – do drop by if you'd like to chat to us face to face.</p>
+        <p><strong>Fancy lending a hand?</strong> Volunteering on a Wednesday is sociable, out in the fresh air, and rewarded in veg: 20% off if you help once a month, 50% off twice a month, or a free bag if you help every week.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="reviews">
+    <div class="wrap">
+      <p class="sub">Don't just take our word for it</p>
+      <h2 class="sec">What our members say</h2>
+      <div class="rating-badge">
+        <span class="score">4.9</span>
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p class="from">from 96 member reviews on Google</p>
+      <div class="review-cards">
+        <div class="review-card">
+          <div class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I love the surprise and challenge of ingredients that we receive which makes cooking more creative. The fresh strawberries and plums taste and smell COMPLETELY different to anything you can buy in the shops."</p>
+          <p class="who">— Fred, on Google</p>
+        </div>
+        <div class="review-card">
+          <div class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"We also get to be friends with the people who run the organisation, as they invite us to cook outs, and get togethers, throughout the year. Highly recommend this truly local, sustainable foodie service."</p>
+          <p class="who">— Sam, on Google</p>
+        </div>
+        <div class="review-card">
+          <div class="r-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Wonderful community driven service providing affordable, organic fruit and vegetables directly from the farmers that grow them. Run by passionate and friendly people who care."</p>
+          <p class="who">— Salazar, on Google</p>
+        </div>
+      </div>
+      <a class="btn ghost" href="https://maps.google.com/?cid=5033698379623429010">Read all our reviews</a>
+      <a class="btn ghost" href="https://search.google.com/local/writereview?placeid=ChIJT8_-i_AadkgRkvPprwFK20U">Leave us a review</a>
+    </div>
+  </section>
+
+  <section id="join" class="join">
+    <div class="wrap">
+      <p class="sub">New members always welcome</p>
+      <h2 class="sec">Join the scheme</h2>
+      <p>Email us and we'll help you choose a bag, pick a collection point, and get set up – usually in time for next week's veg. As a member of the co-operative you'll have a say in how the scheme is run, so chime in by email or on social media, and join us at our AGM.</p>
+      <p>You can also ring us on <strong>07815 771 939</strong> – we work part time on Vegbox, so leave a message and we'll get back to you, or email <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a>.</p>
+      <a class="btn" href="signup.html">Sign up online</a>
+      <div class="veg-row" aria-hidden="true">
+        <img src="images/apples.webp" alt="">
+        <img src="images/asparagus.webp" alt="">
+        <img src="images/broad_beans.webp" alt="">
+        <img src="images/brussels_sprouts.webp" alt="">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="trees" aria-hidden="true">
+  <img src="images/trees.webp" alt="">
+</div>
+<footer>
+  <div class="wrap">
+    <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
+    <p>A not-for-profit community co-operative<br>
+    <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> · 07815 771 939</p>
+    <p><a href="https://www.facebook.com/KentishTownVegbox/">Facebook</a> · <a href="https://www.instagram.com/kentishtownvegbox/">Instagram</a> · <a href="https://kentishtownvegbox.substack.com/">Newsletter</a></p>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var calendar = [
+    /* Jan */ [['kale','kale'],['leek','leeks'],['parnsnip','parsnips'],['celeriac','celeriac'],['swede','swede'],['carrots','carrots']],
+    /* Feb */ [['purple_sprouting','purple sprouting'],['leek','leeks'],['savoy_cabbage','savoy cabbage'],['celeriac','celeriac'],['gerusalem_artichoke','Jerusalem artichokes'],['swede','swede']],
+    /* Mar */ [['purple_sprouting','purple sprouting'],['wild_garlic','wild garlic'],['rhubarb','rhubarb'],['spring_greens','spring greens'],['leek','leeks'],['kale','kale']],
+    /* Apr */ [['asparagus','asparagus'],['wild_garlic','wild garlic'],['rhubarb','rhubarb'],['spring_greens','spring greens'],['radish','radishes'],['salad_leaves','salad leaves']],
+    /* May */ [['asparagus','asparagus'],['radish','radishes'],['spring_onions','spring onions'],['green_garlic','green garlic'],['spinach','spinach'],['new_potatoes','new potatoes']],
+    /* Jun */ [['strawberries','strawberries'],['broad_beans','broad beans'],['new_potatoes','new potatoes'],['courgettes','courgettes'],['bunching_carrots','bunching carrots'],['salad_leaves','salad leaves']],
+    /* Jul */ [['strawberries','strawberries'],['cherries','cherries'],['courgettes','courgettes'],['broad_beans','broad beans'],['globe_artichoke','globe artichokes'],['fennel','fennel']],
+    /* Aug */ [['tomatoes','tomatoes'],['courgettes','courgettes'],['aubergine','aubergines'],['peppers','peppers'],['plums','plums'],['summer_squash','summer squash']],
+    /* Sep */ [['sweet_corn','sweetcorn'],['tomatoes','tomatoes'],['pears','pears'],['autumn_squash','autumn squash'],['chard','chard'],['kohlrabi','kohlrabi']],
+    /* Oct */ [['apples','apples'],['pears','pears'],['autumn_squash','autumn squash'],['celery','celery'],['mushrooms','mushrooms'],['sweetheart_cabbage','sweetheart cabbage']],
+    /* Nov */ [['parnsnip','parsnips'],['celeriac','celeriac'],['brussels_sprouts','Brussels sprouts'],['kale','kale'],['leek','leeks'],['turnip','turnips']],
+    /* Dec */ [['brussels_sprouts','Brussels sprouts'],['red_cabbage','red cabbage'],['parnsnip','parsnips'],['savoy_cabbage','savoy cabbage'],['potato','potatoes'],['cavolo_nero','cavolo nero']]
+  ];
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var now = new Date();
+  var m = now.getMonth();
+  var row = document.querySelector('.season-row');
+  var label = document.querySelector('.season .month');
+  if (!row || !label) return;
+  label.textContent = 'right now, in ' + months[m];
+  row.innerHTML = '';
+  calendar[m].forEach(function(item){
+    var fig = document.createElement('figure');
+    var img = document.createElement('img');
+    img.src = 'images/' + item[0] + '.webp';
+    img.alt = '';
+    var cap = document.createElement('figcaption');
+    cap.textContent = item[1];
+    fig.appendChild(img); fig.appendChild(cap);
+    row.appendChild(fig);
+  });
+})();
+(function(){
+  var t = document.getElementById('fruitToggle');
+  if (!t) return;
+  t.addEventListener('change', function(){
+    document.querySelectorAll('.bag-img').forEach(function(img){
+      img.src = t.checked ? img.getAttribute('data-fruit') : img.getAttribute('data-plain');
+    });
+  });
+})();
+(function(){
+  // "In the bag this week" note. Starts with a baked-in list (updated at build
+  // time), then refreshes from the Google Sheet via /api/bag when available.
+  var data = {
+    date: '',
+    bags: {
+      Small: [
+        { item: 'New Potatoes', farm: 'Nash Nursery, Kent' },
+        { item: 'Spinach', farm: 'Bore Place, Kent' },
+        { item: 'Cucumber', farm: 'Wild Country Organics, Cambs' },
+        { item: 'Marrow', farm: 'Nash Nursery, Kent' }
+      ],
+      Standard: [
+        { item: 'Green Onions', farm: 'Ripple Farm, Kent' },
+        { item: 'Carrots', farm: 'Bagthorpe, Norfolk' },
+        { item: 'Courgettes', farm: "Sarah Green's, Essex" },
+        { item: 'Fennel', farm: 'Bedlam Farms, Cambs' },
+        { item: 'Cauliflower', farm: 'Staples Vegetables, Lincs' }
+      ],
+      Family: [
+        { item: 'Green Onions', farm: 'Ripple Farm, Kent' },
+        { item: 'Carrots', farm: 'Bagthorpe, Norfolk' },
+        { item: 'Courgettes', farm: "Sarah Green's, Essex" },
+        { item: 'Fennel', farm: 'Bedlam Farms, Cambs' },
+        { item: 'French beans', farm: "Foskett's, Suffolk" },
+        { item: 'Cauliflower', farm: 'Staples Vegetables, Lincs' }
+      ],
+      Mega: [
+        { item: 'New Potatoes', farm: 'Nash Nursery, Kent' },
+        { item: 'Spinach', farm: 'Bore Place, Kent' },
+        { item: 'Cucumber', farm: 'Wild Country Organics, Cambs' },
+        { item: 'Fennel', farm: 'Bedlam Farms, Cambs' },
+        { item: 'French beans', farm: "Foskett's, Suffolk" },
+        { item: 'Summer purslane', farm: 'Forty Hall, London' },
+        { item: 'Marrow', farm: 'Nash Nursery, Kent' }
+      ],
+    },
+    fruit: {
+      Small: [ { item: 'Rhubarb', farm: 'Bedlam Farms, Cambs' } ],
+      Standard: [ { item: 'Rhubarb', farm: 'Bedlam Farms, Cambs' } ],
+      Family: [ { item: 'Rhubarb', farm: 'Bedlam Farms, Cambs' } ],
+      Mega: [ { item: 'Rhubarb', farm: 'Bedlam Farms, Cambs' } ]
+    }
+  };
+  var list = document.getElementById('bagList');
+  var foot = document.getElementById('bagFoot');
+  var dateEl = document.getElementById('bagDate');
+  var tabs = document.querySelectorAll('.note-tabs button');
+  var current = 'Standard';
+
+  function render(bag){
+    var rows = data.bags[bag] || [];
+    list.innerHTML = '';
+    rows.forEach(function(r){
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(r.item + ' '));
+      if (r.farm) {
+        var sp = document.createElement('span');
+        sp.textContent = r.farm;
+        li.appendChild(sp);
+      }
+      list.appendChild(li);
+    });
+    var fruit = ((data.fruit || {})[bag] || []).map(function(f){ return f.item; }).join(', ');
+    if (bag === 'Mega') {
+      foot.textContent = fruit ? 'fruit included \u00b7 this week: ' + fruit : 'fruit included';
+    } else {
+      foot.textContent = fruit ? '+ fruit option this week: ' + fruit : 'seasonal \u00b7 organic \u00b7 packed with care';
+    }
+    if (data.date) { dateEl.textContent = data.date; dateEl.hidden = false; }
+  }
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (btn.getAttribute('data-bag') === current) return;
+      current = btn.getAttribute('data-bag');
+      tabs.forEach(function(b){ b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+      list.classList.add('turning');
+      setTimeout(function(){
+        render(current);
+        list.classList.remove('turning');
+      }, 180);
+    });
+  });
+
+  render(current);
+
+  fetch('/api/bag')
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (res.ok && res.bags && Object.keys(res.bags).length) {
+        data = { date: res.date || '', bags: res.bags, fruit: res.fruit || {} };
+        render(current);
+      }
+    })
+    .catch(function(){ /* keep the baked-in list */ });
+})();
+</script>
+</body>
+</html>

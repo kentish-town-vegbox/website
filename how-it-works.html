@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How it works – Kentish Town Vegbox</title>
+<meta name="description" content="How Kentish Town Vegbox works: choose a bag, we pack it fresh from UK farms on Wednesday, and you collect from a point near you. Payments, holidays and seasonal eating explained.">
+<style>
+@font-face{font-family:'New Spirit';src:url('fonts/new_spirit_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Chaloops';src:url('fonts/chaloops_bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Six Hands';src:url('fonts/six_hands_marker.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Work Sans';src:url('fonts/WorkSans-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+  --ink:#101820;--beet:#8F2147;--green:#2F3B08;--yellow:#E2D028;--orange:#F7A031;
+  --sage:#A5C28D;--paper:#F2F0EB;--card:#FBFAF7;
+  --display:'New Spirit',serif;--fun:'Chaloops',cursive;--hand:'Six Hands',cursive;--body:'Work Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;position:relative}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.93 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--beet)}
+a:focus-visible{outline:3px solid var(--beet);outline-offset:2px;border-radius:2px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+header{background:var(--paper)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;gap:1.25rem;flex-wrap:wrap}
+.nav img{width:170px}
+nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center}
+nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
+nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
+nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
+main{padding:3rem 0 4.5rem}
+.sub{font-family:var(--fun);font-size:1.1rem;color:var(--beet);margin-bottom:.5rem}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.5vw,2.7rem);margin-bottom:1rem}
+h2.sec{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin:3rem 0 1rem}
+.lede{font-size:1.15rem;max-width:40em;margin-bottom:1rem}
+main p{max-width:44em;margin-bottom:1rem}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:1.5rem}
+.step .num{font-family:var(--fun);font-size:1.25rem;color:var(--orange);display:block;margin-bottom:.5rem}
+.step h3{font-family:var(--display);font-weight:700;font-size:1.3rem;margin-bottom:.6rem}
+.note{margin:1.75rem 0;background:var(--card);border-left:6px solid var(--orange);padding:1.1rem 1.35rem;border-radius:0 8px 8px 0;max-width:46em}
+.photo{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);margin:1.25rem 0;max-width:640px;width:100%}
+figure.ph{margin:1.5rem 0;max-width:640px}
+figure.ph img{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);width:100%}
+figure.ph figcaption{font-family:var(--hand);font-size:1.05rem;color:var(--green);margin-top:.5rem}
+.figrow{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.75rem 0}
+.figrow img{border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+@media (max-width:640px){.figrow{grid-template-columns:1fr}}
+.map{width:100%;height:440px;border:0;border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);margin:1.25rem 0}
+.btn{display:inline-block;background:var(--beet);color:#fff;font-family:var(--fun);font-size:1.05rem;text-decoration:none;padding:.8rem 1.7rem;border-radius:999px;border:2.5px solid var(--beet);margin-top:.5rem}
+.btn:hover{background:transparent;color:var(--beet)}
+footer{background:var(--green);color:#fff;padding:2rem 0;margin-top:3rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+footer img{width:170px}
+footer p{color:rgba(255,255,255,.85)}
+footer a{color:#fff}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html" aria-current="page">How it works</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a class="cta" href="signup.html">Sign up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="sub">Simple as 1, 2, 3</p>
+    <h1>How it works</h1>
+    <p class="lede">Join as a member, and every Wednesday a bag of freshly harvested UK fruit and veg arrives at a collection point near you. Here's the whole journey, from field to kitchen.</p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="num">1. Choose</span>
+        <h3>Pick your bag</h3>
+        <p>Become a member and choose from four bag sizes, with or without a weekly fruit supplement added to your bag. Membership is open to everyone. See <a href="index.html#bags">the bags and prices</a>.</p>
+      </div>
+      <div class="step">
+        <span class="num">2. We pack</span>
+        <h3>Fresh from the farm</h3>
+        <p>Our farmers harvest early in the week and deliver to our packing yard at The Thanet Community Centre, where the team packs everything into reusable bags on Wednesday morning.</p>
+      </div>
+      <div class="step">
+        <span class="num">3. Collect</span>
+        <h3>From a point near you</h3>
+        <p>We text you when your bag reaches your local collection point on Wednesday. Collect it by Friday, and return your reusable bag from the week before.</p>
+      </div>
+    </div>
+
+    <div class="figrow">
+      <img src="images/site/weighing_pears.webp" alt="Weighing pears on the scales at the Vegbox packing yard">
+      <img src="images/site/bag_handover.webp" alt="A member collecting their red Mega bag of veg">
+    </div>
+
+    <h2 class="sec">Paying for your bag</h2>
+    <p>Payment is by weekly Direct Debit through GoCardless, a secure online payment system – you set the mandate up once when you sign up, and that's it. The payment goes out on Monday, ahead of the Wednesday when you collect your bag.</p>
+
+    <h2 class="sec">If money is tight</h2>
+    <p>Fresh fruit and veg shouldn't be a luxury. We offer a low-income discount on your weekly bag – no questions asked, just tick the box when you sign up – and we accept Healthy Start vouchers. The discounts are paid for by our member-created <a href="solidarity-fund.html">Solidarity Fund</a>, which anyone can donate to.</p>
+
+    <h2 class="sec">Going on holiday?</h2>
+    <p>If you don't need a bag, let us know by 5pm on Tuesday of the week before and we'll pause your payments for the weeks you take off. We need a week's notice because that's when we order from the farms – we order exactly the right amount so nothing is wasted.</p>
+    <div class="note">Missed the deadline? Please still tell us you're away, and we'll make sure your veg is redistributed – uncollected bags go to local community food schemes and food banks.</div>
+
+    <h2 class="sec">Collection points</h2>
+    <p>Bags are delivered on Wednesday to over twenty collection points across Kentish Town, Camden, Islington and beyond. Find your nearest on the map, and pick it when you sign up.</p>
+    <iframe class="map" src="https://www.google.com/maps/d/embed?mid=10luRpJhs4NFp4zj9tdXIoqsE7MIODyLC&ehbc=2E312F" title="Map of Vegbox collection points" loading="lazy" allowfullscreen></iframe>
+    <p>Can't get to a collection point? For an extra £3 we can home-deliver your bag via our partner bike couriers, <a href="https://nekohomedelivery.com/">Neko Home Delivery</a>. And if you're unable to leave home to collect, talk to us – we'll make sure you get your veg.</p>
+    <figure class="ph">
+      <img src="images/site/collection_shed.webp" alt="A small wooden Vegbox collection shed with a padlocked door and a poster on the front">
+      <figcaption>One of our collection point sheds</figcaption>
+    </figure>
+
+    <h2 class="sec">Our farmers</h2>
+    <p>Everything in your bag is grown as locally as possible, by small-scale sustainable farms in the London hinterland and beyond. They harvest only what's needed each week, which makes Vegbox one of the least wasteful ways to get fresh produce into the city – and because we run a fair supply chain, around 60p of every pound you spend goes to the farmer, compared with roughly 10p in the supermarket system.</p>
+    <figure class="ph">
+      <img src="images/site/martin_ripple_farm.webp" alt="Martin of Ripple Farm smiling in a field, holding a bunch of freshly pulled beetroot">
+      <figcaption>Martin at Ripple Farm, Kent</figcaption>
+    </figure>
+    <iframe class="map" src="https://www.google.com/maps/d/embed?mid=16Swlbl89RQ7LFifLsV29Waat9pxiMgg&ehbc=2E312F" title="Map of the UK farms and producers that supply Kentish Town Vegbox" loading="lazy" allowfullscreen></iframe>
+
+    <h2 class="sec">Eating with the seasons</h2>
+    <p>Your bag follows the UK growing year, so it changes every week – that's the point. Summer is the golden season; winter brings hardy greens, squashes and roots. And in early spring, roughly April to June, comes a lean period growers call the hungry gap, when there's simply less fresh seasonal produce about – the bag will feel a little lighter then.</p>
+    <figure class="ph">
+      <img src="images/site/rainbow_tomatoes.webp" alt="A box of rainbow cherry tomatoes in red, yellow, purple and green">
+      <figcaption>Rainbow tomatoes at the height of summer</figcaption>
+    </figure>
+    <p>Each week's contents are on <a href="index.html">the homepage</a>, and our newsletter shares what's happening in the fields and what's coming into season – along with recipe ideas for anything unfamiliar.</p>
+
+    <h2 class="sec">Ready to start?</h2>
+    <p>Sign up today and your first bag can be ready the following Wednesday.</p>
+    <a class="btn" href="signup.html">Sign up now</a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="images/logo_white.svg" alt="Kentish Town Vegbox, est. 2012">
+    <p>A not-for-profit community co-operative<br>
+    <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> · 07815 771 939</p>
+  </div>
+</footer>
+
+</body>
+</html>
