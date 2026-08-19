@@ -60,13 +60,18 @@ img{max-width:100%;height:auto;display:block}
 header{background:var(--paper)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;max-width:1080px;margin:0 auto;padding:1.1rem 1.25rem}
 .nav img{width:170px}
-nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center;justify-content:center}
+nav ul{display:flex;gap:1.35rem;list-style:none;flex-wrap:wrap;align-items:center;justify-content:flex-end}
 nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
 nav a:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
-nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
-nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
+.nav a.cta{background:var(--beet);color:#fff;font-family:var(--fun);font-size:1rem;padding:.5rem 1.2rem;border-radius:999px;border:2.5px solid var(--beet)}
+.nav a.cta:hover{background:transparent;color:var(--beet);text-decoration:none}
 .nav a.back{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
 .nav a.back:hover{color:var(--beet);text-decoration:underline;text-underline-offset:4px}
+.nav-links{flex:1}
+@media (max-width:760px){
+  .nav a.cta{order:2}
+  .nav-links{order:3;flex-basis:100%}
+}
 
 /* ---------- content pages ---------- */
 main{padding:3rem 0 4.5rem}
