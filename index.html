@@ -16,6 +16,11 @@ main{padding:0}
 html{scroll-behavior:smooth}
 a:focus-visible,button:focus-visible{outline-offset:3px}
 
+/* ---------- hero banner ----------- */
+#banner {width: 100%; display: block; object-fit: cover; aspect-ratio: 3;}
+@media (max-width:860px){#banner{aspect-ratio: 2;}}
+@media (max-width:640px){#banner{aspect-ratio: 16/9;}}
+
 /* ---------- hero (yellow, like the welcome pack) ---------- */
 .hero{background:var(--yellow);padding:4rem 0 0;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center;padding-bottom:3rem}
@@ -190,7 +195,7 @@ h2.sec{font-size:clamp(1.75rem,3.6vw,2.4rem);margin:0 0 1.75rem}
 </header>
 
 <main>
-  <img style="width: 100%; display: block; object-fit: cover; max-height: 240px;" src="images/site/veg-background.webp" alt="A photograph of various vegetables from Kentish Town Vegbox." />
+  <img id="banner" src="images/site/spread_16x9.webp" alt="A photograph of various vegetables from Kentish Town Vegbox." />
   <div id="top" class="hero">
     <div class="wrap hero-grid">
       <div>
