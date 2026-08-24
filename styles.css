@@ -55,6 +55,8 @@ a{color:var(--beet)}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--beet);outline-offset:2px;border-radius:2px}
 img{max-width:100%;height:auto;display:block}
 .wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+.wrap.narrow{max-width:820px}
+.wrap.narrower{max-width:720px}
 
 /* ---------- header / nav ---------- */
 header{background:var(--paper)}
