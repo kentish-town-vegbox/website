@@ -66,7 +66,7 @@
 </main>
 
 <div class="trees" aria-hidden="true">
-  <img src="images/trees.webp" alt="">
+  <img src="images/trees.webp" alt="A background illustration of trees on a hill.">
 </div>
 <footer>
   <div class="wrap footer-grid">
@@ -129,7 +129,7 @@
         var excerpt = (p.excerpt || '').slice(0, 170);
         if ((p.excerpt || '').length > 170) excerpt += '\u2026';
         card.innerHTML =
-          (p.image ? '<a href="' + esc(p.link) + '"><img src="' + esc(p.image) + '" alt="" loading="lazy"></a>' : '') +
+          (p.image ? '<a href="' + esc(p.link) + '"><img src="' + esc(p.image) + '" alt="Illustration for ' + esc(p.title) +  '." loading="lazy"></a>' : '') +
           '<div class="body">' +
             (dateStr ? '<span class="date">' + dateStr + '</span>' : '') +
             '<h2><a href="' + esc(p.link) + '">' + esc(p.title) + '</a></h2>' +
