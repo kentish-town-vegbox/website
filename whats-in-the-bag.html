@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's in the bag – Kentish Town Vegbox</title>
+<meta name="description" content="See exactly what's going into this week's Kentish Town Vegbox bags – every item, the farm it came from, and the price of each bag size. Updated every week.">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<style>
+.lede{font-size:1.15rem;max-width:40em;margin-bottom:2rem}
+.bag-controls{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.bag-tabs{display:flex;gap:.5rem;flex-wrap:wrap}
+.bag-tabs button{font-family:var(--fun);font-size:1.05rem;padding:.5rem 1.4rem;border-radius:999px;border:2.5px solid var(--beet);background:transparent;color:var(--beet);cursor:pointer}
+.bag-tabs button:hover{background:rgba(143,33,71,.08)}
+.bag-tabs button[aria-selected="true"]{background:var(--beet);color:#fff}
+.fruit-toggle{display:inline-flex;align-items:center;gap:.6rem;font-weight:500;cursor:pointer;user-select:none}
+.fruit-toggle input{width:1.15rem;height:1.15rem;accent-color:var(--beet);cursor:pointer}
+.bag-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.bag-photo{aspect-ratio:1/1}
+.bag-photo img{width:100%;height:100%;object-fit:contain}
+.bag-panel{background:var(--card);border-radius:14px;box-shadow:0 4px 18px rgba(16,24,32,.12);padding:1.75rem;order:-1}
+.bag-panel h2{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.2vw,2rem);margin-bottom:.15rem}
+.bag-panel .price{font-family:var(--fun);font-size:1.15rem;color:var(--beet);margin-bottom:.15rem}
+.bag-panel .who{font-size:.95rem;color:rgba(16,24,32,.7);margin-bottom:1.4rem}
+.bag-panel ul{list-style:none}
+.bag-panel li{padding:.5rem 0;border-bottom:1.5px solid rgba(16,24,32,.1);display:flex;align-items:baseline;gap:.65rem}
+.bag-panel li:last-child{border-bottom:none}
+.bag-panel li .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);flex:none;transform:translateY(-3px)}
+.bag-panel li .farm{display:block;font-size:.85rem;color:rgba(16,24,32,.6)}
+.bag-fruit{margin-top:1.4rem;padding-top:1.1rem;border-top:1.5px solid rgba(16,24,32,.14)}
+.bag-fruit h3{font-family:var(--fun);font-weight:400;font-size:1.05rem;color:var(--beet);margin-bottom:.2rem}
+.bag-fruit p{font-size:.98rem}
+.note{margin:1.75rem 0;background:var(--card);border-left:6px solid var(--orange);padding:1.1rem 1.35rem;border-radius:0 8px 8px 0;max-width:46em}
+main p.body{max-width:44em;margin-bottom:1rem}
+@media (max-width:760px){.bag-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main" class="nav-links">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html" aria-current="page">What's in the bag</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="sign-up.html">Sign up</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="sub" id="weekLabel">This week</p>
+    <h1>What's in the bag this week</h1>
+    <p class="lede">Here's what's going into our veg bags this week, and what it costs.</p>
+
+    <div class="bag-controls">
+      <div class="bag-tabs" role="tablist" aria-label="Bag size">
+        <button role="tab" id="tab-Small" data-bag="Small" aria-controls="bagPanel" aria-selected="false" tabindex="-1">Small</button>
+        <button role="tab" id="tab-Standard" data-bag="Standard" aria-controls="bagPanel" aria-selected="true" tabindex="0">Standard</button>
+        <button role="tab" id="tab-Family" data-bag="Family" aria-controls="bagPanel" aria-selected="false" tabindex="-1">Family</button>
+        <button role="tab" id="tab-Mega" data-bag="Mega" aria-controls="bagPanel" aria-selected="false" tabindex="-1">Mega</button>
+      </div>
+      <label class="fruit-toggle"><input type="checkbox" id="fruitToggle" checked> Show the bags with fruit</label>
+    </div>
+
+    <div class="bag-grid">
+      <div class="bag-photo"><img id="bagPhoto" src="images/bag_standard.webp" alt="The contents of a Standard bag laid out"></div>
+      <div class="bag-panel" id="bagPanel" role="tabpanel" aria-labelledby="tab-Standard" tabindex="0"></div>
+    </div>
+
+    <p class="note">Bag contents may change at the last minute. Weather and harvest have the final say!</p>
+
+    <h2 class="sec">Eating with the seasons</h2>
+    <p class="body">Your bag follows the UK growing year, so it changes every week – that's the point. Summer is the golden season; winter brings hardy greens, squashes and roots. And in early spring, roughly April to June, comes a lean period growers call the hungry gap, when there's simply less fresh seasonal produce about – the bag will feel a little lighter then.</p>
+    <p class="body">Almost everything is grown by small-scale sustainable farms in the London hinterland, harvested early in the week and packed into reusable bags on Wednesday morning. Bring last week's bag back to your collection point and we'll take it away.</p>
+
+    <h2 class="sec">Ready to start?</h2>
+    <p class="body">Sign up today and your first bag can be ready the following Wednesday.</p>
+    <a class="btn" href="sign-up.html">Sign up now</a>
+  </div>
+</main>
+
+<div class="trees" aria-hidden="true">
+  <img src="images/trees.webp" alt="A background illustration of trees on a hill.">
+</div>
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
+      <p>A not-for-profit community co-operative, growing good food and good company in North London since 2012.</p>
+      <p class="footer-contact">
+        <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a><br>
+        <a href="tel:+447815771939">07815 771 939</a>
+      </p>
+    </div>
+    <nav class="footer-col" aria-label="About the co-op">
+      <h2>The co-op</h2>
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Get involved">
+      <h2>Get involved</h2>
+      <ul>
+        <li><a href="sign-up.html">Sign up</a></li>
+        <li><a href="index.html#collect">Collection points</a></li>
+        <li><a href="index.html#visit">Volunteer</a></li>
+        <li><a href="solidarity-fund.html">Solidarity Fund</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Stay in touch">
+      <h2>Stay in touch</h2>
+      <ul>
+        <li><a href="https://kentishtownvegbox.substack.com/" target="_blank" rel="noopener">Newsletter</a></li>
+        <li><a href="https://www.facebook.com/KentishTownVegbox/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/kentishtownvegbox/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Kentish Town Vegbox &middot; A community co-operative serving Camden &amp; Islington</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Baked-in list (updated at build time), then refreshed from the Google Sheet
+  // via /api/bag when available — same source as the homepage note.
+  var data = {
+    date: '2nd September 2026',
+    bags: {
+      Small: [
+        { item: 'Onions', farm: 'Bagthorpe Farm, Norfolk' },
+        { item: 'Aubergine', farm: 'Nash Nursery, Kent' },
+        { item: 'Beetroot', farm: 'Sarah Green, Essex' },
+        { item: 'Carrots, Rainbow bunched', farm: "Foskett's, Suffolk" }
+      ],
+      Standard: [
+        { item: 'Potatoes, Supernova', farm: 'Nash Nursery, Kent' },
+        { item: 'Courgette', farm: 'Ripple Farm, Kent' },
+        { item: 'Purple Sprouting Broccoli', farm: 'Bedlam Farms, Cambs' },
+        { item: 'Lettuce', farm: 'Bore Place, Kent' },
+        { item: 'Cucumber', farm: 'Laine Organics, Sussex' }
+      ],
+      Family: [
+        { item: 'Potatoes, Supernova', farm: 'Nash Nursery, Kent' },
+        { item: 'Courgette', farm: 'Ripple Farm, Kent' },
+        { item: 'Kohl Rabi, Purple', farm: 'Nash Nursery, Kent' },
+        { item: 'Lettuce', farm: 'Bore Place, Kent' },
+        { item: 'Cucumber', farm: 'Laine Organics, Sussex' },
+        { item: 'Broccoli', farm: 'Langridge Organics, Yorkshire' }
+      ],
+      Mega: [
+        { item: 'Onions', farm: 'Bagthorpe Farm, Norfolk' },
+        { item: 'Aubergine', farm: 'Nash Nursery, Kent' },
+        { item: 'Beetroot', farm: 'Sarah Green, Essex' },
+        { item: 'Kohl Rabi, Purple', farm: 'Nash Nursery, Kent' },
+        { item: 'Peppers, Red Long Sweet', farm: 'Sarah Green, Kent' },
+        { item: 'Carrots, Rainbow bunched', farm: "Foskett's, Suffolk" },
+        { item: 'Lettuce', farm: 'Bore Place, Kent' }
+      ]
+    },
+    fruit: {
+      Small: [ { item: 'Strawberries', farm: 'Hugh Lowe, Kent' } ],
+      Standard: [ { item: 'Strawberries', farm: 'Hugh Lowe, Kent' } ],
+      Family: [ { item: 'Strawberries', farm: 'Hugh Lowe, Kent' } ],
+      Mega: [ { item: 'Strawberries', farm: 'Hugh Lowe, Kent' } ]
+    }
+  };
+
+  var META = {
+    Small:    { price: '£9 a week',     fruitPrice: '£11.65 a week with fruit', who: 'For 1 person' },
+    Standard: { price: '£12 a week',    fruitPrice: '£15.50 a week with fruit', who: 'For 1–2 people' },
+    Family:   { price: '£16.50 a week', fruitPrice: '£20.80 a week with fruit', who: 'For 3–4 people' },
+    Mega:     { price: '£26 a week, fruit always included', fruitIncluded: true, who: 'For 4+ people' }
+  };
+  var PHOTOS = {
+    Small:    { plain: 'images/bag_small.webp',    fruit: 'images/bag_small_fruit.webp' },
+    Standard: { plain: 'images/bag_standard.webp', fruit: 'images/bag_standard_fruit.webp' },
+    Family:   { plain: 'images/bag_family.webp',   fruit: 'images/bag_family_fruit.webp' },
+    Mega:     { plain: 'images/bag_mega.webp',     fruit: 'images/bag_mega.webp' }
+  };
+
+  var order = ['Small', 'Standard', 'Family', 'Mega'];
+  var current = 'Standard';
+  var panel = document.getElementById('bagPanel');
+  var photo = document.getElementById('bagPhoto');
+  var weekLabel = document.getElementById('weekLabel');
+  var toggle = document.getElementById('fruitToggle');
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.bag-tabs button'));
+
+  function render(){
+    var meta = META[current];
+    var withFruit = toggle.checked;
+    var items = (data.bags || {})[current] || [];
+    var fruitItems = (data.fruit || {})[current] || [];
+    var showFruit = (withFruit || meta.fruitIncluded) && fruitItems.length;
+
+    if (data.date) weekLabel.textContent = 'Wednesday ' + data.date;
+
+    photo.src = (withFruit && !meta.fruitIncluded) ? PHOTOS[current].fruit : PHOTOS[current].plain;
+    photo.alt = 'The contents of a ' + current + ' bag laid out';
+
+    panel.innerHTML = '';
+    panel.setAttribute('aria-labelledby', 'tab-' + current);
+
+    var h2 = document.createElement('h2');
+    h2.textContent = current + ' bag';
+    panel.appendChild(h2);
+
+    var price = document.createElement('p');
+    price.className = 'price';
+    price.textContent = meta.fruitIncluded ? meta.price : (withFruit ? meta.fruitPrice : meta.price);
+    panel.appendChild(price);
+
+    var who = document.createElement('p');
+    who.className = 'who';
+    who.textContent = meta.who + ' \u00b7 ' + items.length + ' varieties of veg this week';
+    panel.appendChild(who);
+
+    var ul = document.createElement('ul');
+    items.forEach(function(r){
+      var li = document.createElement('li');
+      var dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.setAttribute('aria-hidden', 'true');
+      li.appendChild(dot);
+      var body = document.createElement('span');
+      body.appendChild(document.createTextNode(r.item));
+      if (r.farm) {
+        var farm = document.createElement('span');
+        farm.className = 'farm';
+        farm.textContent = r.farm;
+        body.appendChild(farm);
+      }
+      li.appendChild(body);
+      ul.appendChild(li);
+    });
+    panel.appendChild(ul);
+
+    if (showFruit) {
+      var box = document.createElement('div');
+      box.className = 'bag-fruit';
+      var h3 = document.createElement('h3');
+      h3.textContent = 'With fruit supplement';
+      box.appendChild(h3);
+      var p = document.createElement('p');
+      p.textContent = fruitItems.map(function(f){
+        return f.farm ? f.item + ' from ' + f.farm : f.item;
+      }).join(', ') + '.';
+      box.appendChild(p);
+      panel.appendChild(box);
+    }
+  }
+
+  function select(bag){
+    current = bag;
+    tabs.forEach(function(b){
+      var on = b.getAttribute('data-bag') === bag;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.setAttribute('tabindex', on ? '0' : '-1');
+    });
+    render();
+  }
+
+  tabs.forEach(function(btn, i){
+    btn.addEventListener('click', function(){ select(btn.getAttribute('data-bag')); });
+    btn.addEventListener('keydown', function(e){
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % order.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + order.length) % order.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = order.length - 1;
+      if (next !== null) { e.preventDefault(); select(order[next]); tabs[next].focus(); }
+    });
+  });
+  toggle.addEventListener('change', render);
+
+  render();
+
+  fetch('/api/bag')
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if (res.ok && res.bags && Object.keys(res.bags).length) {
+        data = { date: res.date || '', bags: res.bags, fruit: res.fruit || {} };
+        render();
+      }
+    })
+    .catch(function(){ /* keep the baked-in list */ });
+})();
+</script>
+</body>
+</html>
