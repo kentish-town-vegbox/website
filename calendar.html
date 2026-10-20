@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seasonal Veg Calendar 2027 – Kentish Town Vegbox</title>
+<meta name="description" content="The first-ever Kentish Town Vegbox calendar for 2027: a month-by-month guide to seasonal veg, recipe ideas and original illustrations by Ellie Paganini. £15 for members, £18 for non-members.">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<style>
+.cal{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:3rem;align-items:start}
+
+/* ---------- gallery (sticky on desktop) ---------- */
+.gallery{position:sticky;top:1.5rem}
+.stage{position:relative;background:var(--card);border-radius:8px;box-shadow:5px 7px 0 rgba(16,24,32,.12);overflow:hidden;aspect-ratio:1/1;width:min(100%,calc(100vh - 10rem));min-width:240px}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage:not(:hover, :focus-visible, :focus-within) .arrow {opacity: 0}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid var(--beet);background:rgba(251,250,247,.92);color:var(--beet);font-family:var(--body);font-weight:bold;font-size:1.3rem;cursor:pointer;transition:opacity .15s}
+.arrow:hover{background:var(--beet);color:#fff}
+.arrow.prev{left:.6rem}
+.arrow.next{right:.6rem}
+.count{position:absolute;right:.6rem;bottom:.6rem;background:rgba(16,24,32,.72);color:#fff;font-size:.8rem;line-height:1;padding:.35rem .6rem;border-radius:999px}
+.thumbs{display:flex;gap:.5rem;margin-top:1rem;overflow-x:auto;padding:.3rem .3rem .6rem;list-style:none;width:min(100%,calc(100vh - 10rem));scrollbar-width:thin}
+.thumbs button{display:block;width:56px;height:56px;padding:0;border:0;border-radius:5px;overflow:hidden;cursor:pointer;background:var(--card);opacity:.7;outline:2px solid transparent;outline-offset:2px;transition:opacity .15s}
+.thumbs button:hover{opacity:1}
+.thumbs button:is([aria-current="true"], :focus-visible){opacity:1;outline-color:var(--beet)}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- text column ---------- */
+.price{font-family:var(--fun);font-size:1.35rem;color:var(--beet);margin-bottom:1.5rem}
+.info p{margin-bottom:1rem;max-width:36em}
+.info h2{font-family:var(--display);font-weight:700;font-size:1.3rem;margin:1.75rem 0 .6rem}
+.inside{list-style:none;margin-bottom:1.75rem}
+.inside li{position:relative;padding-left:1.4rem;margin-bottom:.45rem}
+.inside li::before{content:"";position:absolute;left:.2rem;top:.65em;width:.5rem;height:.5rem;border-radius:50%;background:var(--sage)}
+.inside strong{font-weight:700}
+.buy{margin:2.25rem 0 0}
+.closing{margin-top:2.5rem;padding-top:2rem;border-top:1.5px solid rgba(16,24,32,.15)}
+.closing .ask{font-family:var(--fun);font-size:1.25rem;color:var(--beet);margin-bottom:1rem}
+.closing .btn{margin-left:1em}
+.details{margin-top:2.5rem;background:var(--card);border-radius:8px;box-shadow:5px 7px 0 rgba(16,24,32,.12);padding:.5rem 1.5rem 1.25rem}
+.details p:last-child{margin-bottom:0}
+
+@media (max-width:820px){
+  .cal{grid-template-columns:1fr;gap:2rem}
+  .gallery{position:static}
+  .stage,.thumbs{width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main" class="nav-links">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="https://dandelion.events/o/vegbox" target="_blank" rel="noopener">Events</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="sign-up.html">Sign up</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="cal">
+
+      <div class="gallery" id="gallery" role="group" aria-roledescription="carousel" aria-label="Calendar pictures">
+        <div class="stage">
+          <img id="stage-img" src="images/calendar/calendar_cover.png" alt="Cover of the Kentish Town Vegbox Seasonal Veg Calendar 2027, showing Brassica the cabbage sprite above a patchwork of fields">
+          <button class="arrow prev" type="button" aria-label="Previous picture">&larr;</button>
+          <button class="arrow next" type="button" aria-label="Next picture">&rarr;</button>
+          <span class="count" aria-live="polite"></span>
+        </div>
+        <!--
+          To add a picture, add another <li> below. Thumbnails whose image
+          is missing are removed automatically, so it's safe to list pictures
+          before the files are uploaded.
+        -->
+        <ul class="thumbs" aria-label="Choose a picture">
+          <li><button type="button" data-src="images/calendar/calendar_cover.png" data-alt="Cover of the Kentish Town Vegbox Seasonal Veg Calendar 2027, showing Brassica the cabbage sprite above a patchwork of fields" aria-current="true"><img src="images/calendar/calendar_cover.png" alt="Cover"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_how.png" data-alt="How does this calendar work? A diagram labelling the month, veg spotlight, Brassica, veg of the month, our team, day planner, Vegbox pick up day and suggested recipes"><img src="images/calendar/calendar_how.png" alt="How it works"></button></li>
+          <!-- <li><button type="button" data-src="images/calendar/calendar_january.png" data-alt="January page of the 2027 calendar"><img src="images/calendar/calendar_january.png" alt="January"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_february.png" data-alt="February page of the 2027 calendar"><img src="images/calendar/calendar_february.png" alt="February"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_march.png" data-alt="March page of the 2027 calendar"><img src="images/calendar/calendar_march.png" alt="March"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_april.png" data-alt="April page of the 2027 calendar"><img src="images/calendar/calendar_april.png" alt="April"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_may.png" data-alt="May page of the 2027 calendar"><img src="images/calendar/calendar_may.png" alt="May"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_june.png" data-alt="June page of the 2027 calendar"><img src="images/calendar/calendar_june.png" alt="June"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_july.png" data-alt="July page of the 2027 calendar"><img src="images/calendar/calendar_july.png" alt="July"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_august.png" data-alt="August page of the 2027 calendar"><img src="images/calendar/calendar_august.png" alt="August"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_september.png" data-alt="September page of the 2027 calendar"><img src="images/calendar/calendar_september.png" alt="September"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_october.png" data-alt="October page of the 2027 calendar"><img src="images/calendar/calendar_october.png" alt="October"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_november.png" data-alt="November page of the 2027 calendar"><img src="images/calendar/calendar_november.png" alt="November"></button></li>
+          <li><button type="button" data-src="images/calendar/calendar_december.png" data-alt="December page of the 2027 calendar"><img src="images/calendar/calendar_december.png" alt="December"></button></li> -->
+        </ul>
+      </div>
+
+      <div class="info">
+        <h1>Seasonal Veg Calendar 2027</h1>
+        <p class="price">£15 for members, £18 for non-members</p>
+
+        <p>Take a month-by-month journey through the seasons with our first-ever Vegbox calendar! Tune into the natural rhythms of the seasons, discover new ways to enjoy what’s growing, and brighten up your kitchen.</p>
+        <p>Beautifully designed by Ellie Paganini, the calendar features photos from the packing yard, original illustrations and our mischievous mascot, Brassica.</p>
+
+        <h2>Inside you’ll find</h2>
+        <ul class="inside">
+          <li><strong>What's in season</strong>: a month-by-month guide to seasonal fruit and vegetables</li>
+          <li><strong>Recipe inspiration</strong>: ideas to help you make the most of the produce available</li>
+          <li><strong>Illustrations and cartoons</strong>: original artwork by Ellie Paganini</li>
+          <li><strong>Day planner</strong>: space to keep track of the plans, events and holidays</li>
+        </ul>
+
+        <div class="closing">
+          <p>Whether it’s hanging in your kitchen, given as a gift, or used as a gentle nudge to eat more seasonally, we hope it brings a little curiosity and enjoyment to your year.</p>
+          <p class="ask">Fancy one for your kitchen?</p>
+          <br/>
+          <a class="btn" href="https://dandelion.events/e/vegbox-calendar-2027" target="_blank" rel="noopener">Buy the 2027 Calendar</a>
+          <br/>
+          <br/>
+        </div>
+
+        <div class="details">
+          <h2>Dimensions</h2>
+          <p>Closed size: 30 × 30 cm<br>Open size: 30 × 60 cm<br>Printed by Print Farringdon</p>
+
+          <h2>Delivery</h2>
+          <p>Preorders are open in November<br>Orders sent out in December to arrive before January</p>
+
+          <h2>International orders</h2>
+          <p>International shipping isn’t available as a standard option through our shop, but we may be able to arrange it. Please email <a href="mailto:marketing@vegbox.org.uk">marketing@vegbox.org.uk</a> before ordering and we’ll see what we can do.</p>
+
+          <h2>Wholesale</h2>
+          <p>Want to stock the Vegbox calendar in your shop, café, community space or workplace? Please email <a href="mailto:marketing@vegbox.org.uk">marketing@vegbox.org.uk</a> to find out more</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="trees" aria-hidden="true">
+  <img src="images/trees.webp" alt="A background illustration of trees on a hill.">
+</div>
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
+      <p>A not-for-profit community co-operative, growing good food and good company in North London since 2012.</p>
+      <p class="footer-contact">
+        <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a><br>
+        <a href="tel:+447815771939">07815 771 939</a>
+      </p>
+    </div>
+    <nav class="footer-col" aria-label="About the co-op">
+      <h2>The co-op</h2>
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Get involved">
+      <h2>Get involved</h2>
+      <ul>
+        <li><a href="sign-up.html">Sign up</a></li>
+        <li><a href="index.html#collect">Collection points</a></li>
+        <li><a href="index.html#visit">Volunteer</a></li>
+        <li><a href="solidarity-fund.html">Solidarity Fund</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Stay in touch">
+      <h2>Stay in touch</h2>
+      <ul>
+        <li><a href="https://kentishtownvegbox.substack.com/" target="_blank" rel="noopener">Newsletter</a></li>
+        <li><a href="https://www.facebook.com/KentishTownVegbox/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/kentishtownvegbox/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Kentish Town Vegbox &middot; A community co-operative serving Camden &amp; Islington</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var gallery = document.getElementById('gallery');
+  var stage = document.getElementById('stage-img');
+  var strip = gallery.querySelector('.thumbs');
+  var prev = gallery.querySelector('.prev');
+  var next = gallery.querySelector('.next');
+  var count = gallery.querySelector('.count');
+  var current = 0;
+
+  function items(){ return Array.prototype.slice.call(strip.querySelectorAll('button')); }
+
+  function show(i){
+    var list = items();
+    current = (i + list.length) % list.length;
+    list.forEach(function(b, n){
+      if (n === current) b.setAttribute('aria-current', 'true');
+      else b.removeAttribute('aria-current');
+    });
+    var b = list[current];
+    stage.src = b.dataset.src;
+    stage.alt = b.dataset.alt;
+    count.textContent = (current + 1) + ' / ' + list.length;
+    var left = b.offsetLeft - (strip.clientWidth - b.offsetWidth) / 2;
+    strip.scrollTo({left: left, behavior: 'smooth'});
+  }
+
+  strip.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if (b) show(items().indexOf(b));
+  });
+
+  prev.addEventListener('click', function(){ show(current - 1); });
+  next.addEventListener('click', function(){ show(current + 1); });
+
+  window.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+  });
+
+  // Swipe on touch screens.
+  var startX = null;
+  stage.parentNode.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  stage.parentNode.addEventListener('touchend', function(e){
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    startX = null;
+    if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+  });
+
+  show(current);
+})();
+</script>
+
+</body>
+</html>
