@@ -15,11 +15,11 @@
 
 /* ---------- gallery (sticky on desktop) ---------- */
 .gallery{position:sticky;top:1.5rem}
-.stage{position:relative;background:var(--card);border-radius:8px;box-shadow:5px 7px 0 rgba(16,24,32,.12);overflow:hidden;aspect-ratio:1/1;width:min(100%,calc(100vh - 10rem));min-width:240px}
+.stage{position:relative;background:var(--card);border-radius:8px;box-shadow:5px 7px 0 rgba(16,24,32,.12);overflow:hidden;aspect-ratio:3/4;width:min(100%,calc((100vh - 10rem) * .75));min-width:240px}
 .stage{cursor:zoom-in}
-.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .stage.zoomed{position:fixed;inset:0;z-index:100;width:auto;aspect-ratio:auto;border-radius:0;box-shadow:none;background:rgba(16,24,32,.88);cursor:zoom-out;display:flex;align-items:center;justify-content:center;padding:1.5rem}
-.stage.zoomed img{position:static;width:min(100%,calc(100vh - 3rem));height:auto;aspect-ratio:1/1;border-radius:8px}
+.stage.zoomed img{position:static;width:min(100%,calc((100vh - 3rem) * .75));height:auto;aspect-ratio:3/4;border-radius:8px}
 .stage.zoomed .count{display:none}
 .gallery:has(.stage.zoomed){z-index:100}
 .stage:not(:hover, :focus-visible, :focus-within) .arrow {opacity: 0}
@@ -28,11 +28,11 @@
 .arrow.prev{left:.6rem}
 .arrow.next{right:.6rem}
 .count{position:absolute;right:.6rem;bottom:.6rem;background:rgba(16,24,32,.72);color:#fff;font-size:.8rem;line-height:1;padding:.35rem .6rem;border-radius:999px}
-.thumbs{display:flex;gap:.5rem;margin-top:1rem;overflow-x:auto;padding:.3rem .3rem .6rem;list-style:none;width:min(100%,calc(100vh - 10rem));scrollbar-width:thin}
-.thumbs button{display:block;width:56px;height:56px;padding:0;border:0;border-radius:5px;overflow:hidden;cursor:pointer;background:var(--card);opacity:.7;outline:2px solid transparent;outline-offset:2px;transition:opacity .15s}
+.thumbs{display:flex;gap:.5rem;margin-top:1rem;overflow-x:auto;padding:.3rem .3rem .6rem;list-style:none;width:min(100%,calc((100vh - 10rem) * .75));scrollbar-width:thin}
+.thumbs button{display:block;flex:none;width:48px;height:64px;padding:0;border:0;border-radius:5px;overflow:hidden;cursor:pointer;background:var(--card);opacity:.7;outline:2px solid transparent;outline-offset:2px;transition:opacity .15s}
 .thumbs button:hover{opacity:1}
 .thumbs button:is([aria-current="true"], :focus-visible){opacity:1;outline-color:var(--beet)}
-.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs img{width:100%;height:100%;object-fit:contain}
 
 /* ---------- text column ---------- */
 .price{font-family:var(--fun);font-size:1.35rem;color:var(--beet);margin-bottom:1.5rem}
@@ -128,17 +128,17 @@
           <p>Whether it’s hanging in your kitchen, given as a gift, or used as a gentle nudge to eat more seasonally, we hope it brings a little curiosity and enjoyment to your year.</p>
           <p class="ask">Fancy one for your kitchen?</p>
           <br/>
-          <a class="btn" href="https://dandelion.events/e/vegbox-calendar-2027" target="_blank" rel="noopener">Buy the 2027 Calendar</a>
+          <a class="btn" href="https://dandelion.events/e/vegbox-calendar-2027" target="_blank" rel="noopener">Preorder the 2027 Calendar!</a>
           <br/>
           <br/>
         </div>
 
         <div class="details">
           <h2>Dimensions</h2>
-          <p>Closed size: 30 × 30 cm<br>Open size: 30 × 60 cm<br>Printed by Print Farringdon</p>
+          <p>Closed size: 30 × 30 cm<br>Open size: 30 × 60 cm<br>Printed by: Print Farringdon</p>
 
           <h2>Delivery</h2>
-          <p>Preorders are open in November<br>Orders sent out in December to arrive before January</p>
+          <p>Preorders must be made before <b>December 1st</b>. Orders will be sent out in December, to arrive before the New Year.</p>
 
           <h2>International orders</h2>
           <p>International shipping isn’t available as a standard option through our shop, but we may be able to arrange it. Please email <a href="mailto:marketing@vegbox.org.uk">marketing@vegbox.org.uk</a> before ordering and we’ll see what we can do.</p>
