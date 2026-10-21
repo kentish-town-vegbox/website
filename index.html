@@ -17,8 +17,13 @@ html{scroll-behavior:smooth}
 a:focus-visible,button:focus-visible{outline-offset:3px}
 
 /* ---------- hero banner ----------- */
-#banner {width: 100%; display: block; object-fit: cover; object-position: 0 60%; aspect-ratio: 3;}
-@media (max-width:860px){#banner{aspect-ratio: 2;}}
+.banner{position:relative}
+#banner {width: 100%; display: block; object-fit: cover; object-position: 30% 50%; aspect-ratio: 3;}
+.banner-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:min(90%,34rem)}
+.banner-year{font-family:var(--fun);color:var(--beet);line-height:1;margin:0 0 .25rem;font-size:clamp(3rem,12vw,7rem);text-shadow:0 0 .4em rgba(251,250,247,.9)}
+.banner-text p{font-family:var(--display);font-weight:700;font-size:clamp(1.1rem,2.6vw,2rem);margin:0 0 1rem;text-shadow:0 0 .6em rgba(251,250,247,.95)}
+@media (max-width:860px){#banner{aspect-ratio: 2}}
+@media (max-width:540px){#banner{aspect-ratio: 1.5}}
 
 /* ---------- hero (yellow, like the welcome pack) ---------- */
 .hero{background:var(--yellow);padding:4rem 0 0;overflow:hidden}
@@ -196,7 +201,14 @@ h2.sec{font-size:clamp(1.75rem,3.6vw,2.4rem);margin:0 0 1.75rem}
 </header>
 
 <main>
-  <img id="banner" src="images/site/spread_2x1.webp" alt="A photograph of various vegetables from Kentish Town Vegbox." />
+  <div class="banner">
+    <img id="banner" src="images/calendar/banner.webp" alt="A watercolour map of fields with Brassica the cabbage sprite parachuting beside the October page of the 2027 calendar." />
+    <div class="banner-text">
+      <div class="banner-year">2027</div>
+      <p>Seasonal Veg Calendar</p>
+      <a class="btn" href="calendar.html">Now Available!</a>
+    </div>
+  </div>
   <div id="top" class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -560,7 +572,7 @@ h2.sec{font-size:clamp(1.75rem,3.6vw,2.4rem);margin:0 0 1.75rem}
   function footText(bag){
     var fruit = ((data.fruit || {})[bag] || []).map(function(f){ return f.item; }).join(', ');
     if (bag === 'Mega') {
-      return fruit ? 'fruit included \u00b7 this week: ' + fruit : 'fruit included';
+      return fruit ? 'fruit included this week: ' + fruit : 'fruit included';
     }
     return fruit ? '+ fruit option this week: ' + fruit : 'seasonal \u00b7 organic \u00b7 packed with care';
   }

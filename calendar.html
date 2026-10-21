@@ -16,7 +16,12 @@
 /* ---------- gallery (sticky on desktop) ---------- */
 .gallery{position:sticky;top:1.5rem}
 .stage{position:relative;background:var(--card);border-radius:8px;box-shadow:5px 7px 0 rgba(16,24,32,.12);overflow:hidden;aspect-ratio:1/1;width:min(100%,calc(100vh - 10rem));min-width:240px}
+.stage{cursor:zoom-in}
 .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage.zoomed{position:fixed;inset:0;z-index:100;width:auto;aspect-ratio:auto;border-radius:0;box-shadow:none;background:rgba(16,24,32,.88);cursor:zoom-out;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.stage.zoomed img{position:static;width:min(100%,calc(100vh - 3rem));height:auto;aspect-ratio:1/1;border-radius:8px}
+.stage.zoomed .count{display:none}
+.gallery:has(.stage.zoomed){z-index:100}
 .stage:not(:hover, :focus-visible, :focus-within) .arrow {opacity: 0}
 .arrow{position:absolute;top:50%;transform:translateY(-50%);width:2.5rem;height:2.5rem;border-radius:50%;border:2px solid var(--beet);background:rgba(251,250,247,.92);color:var(--beet);font-family:var(--body);font-weight:bold;font-size:1.3rem;cursor:pointer;transition:opacity .15s}
 .arrow:hover{background:var(--beet);color:#fff}
@@ -45,7 +50,7 @@
 .details p:last-child{margin-bottom:0}
 
 @media (max-width:820px){
-  .cal{grid-template-columns:1fr;gap:2rem}
+  .cal{grid-template-columns:minmax(0,1fr);gap:2rem}
   .gallery{position:static}
   .stage,.thumbs{width:100%}
 }
@@ -76,7 +81,7 @@
 
       <div class="gallery" id="gallery" role="group" aria-roledescription="carousel" aria-label="Calendar pictures">
         <div class="stage">
-          <img id="stage-img" src="images/calendar/calendar_cover.png" alt="Cover of the Kentish Town Vegbox Seasonal Veg Calendar 2027, showing Brassica the cabbage sprite above a patchwork of fields">
+          <img id="stage-img" src="images/calendar/cover.webp" alt="Cover of the Kentish Town Vegbox Seasonal Veg Calendar 2027, showing Brassica the cabbage sprite above a patchwork of fields">
           <button class="arrow prev" type="button" aria-label="Previous picture">&larr;</button>
           <button class="arrow next" type="button" aria-label="Next picture">&rarr;</button>
           <span class="count" aria-live="polite"></span>
@@ -87,20 +92,20 @@
           before the files are uploaded.
         -->
         <ul class="thumbs" aria-label="Choose a picture">
-          <li><button type="button" data-src="images/calendar/calendar_cover.png" data-alt="Cover of the Kentish Town Vegbox Seasonal Veg Calendar 2027, showing Brassica the cabbage sprite above a patchwork of fields" aria-current="true"><img src="images/calendar/calendar_cover.png" alt="Cover"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_how.png" data-alt="How does this calendar work? A diagram labelling the month, veg spotlight, Brassica, veg of the month, our team, day planner, Vegbox pick up day and suggested recipes"><img src="images/calendar/calendar_how.png" alt="How it works"></button></li>
-          <!-- <li><button type="button" data-src="images/calendar/calendar_january.png" data-alt="January page of the 2027 calendar"><img src="images/calendar/calendar_january.png" alt="January"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_february.png" data-alt="February page of the 2027 calendar"><img src="images/calendar/calendar_february.png" alt="February"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_march.png" data-alt="March page of the 2027 calendar"><img src="images/calendar/calendar_march.png" alt="March"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_april.png" data-alt="April page of the 2027 calendar"><img src="images/calendar/calendar_april.png" alt="April"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_may.png" data-alt="May page of the 2027 calendar"><img src="images/calendar/calendar_may.png" alt="May"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_june.png" data-alt="June page of the 2027 calendar"><img src="images/calendar/calendar_june.png" alt="June"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_july.png" data-alt="July page of the 2027 calendar"><img src="images/calendar/calendar_july.png" alt="July"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_august.png" data-alt="August page of the 2027 calendar"><img src="images/calendar/calendar_august.png" alt="August"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_september.png" data-alt="September page of the 2027 calendar"><img src="images/calendar/calendar_september.png" alt="September"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_october.png" data-alt="October page of the 2027 calendar"><img src="images/calendar/calendar_october.png" alt="October"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_november.png" data-alt="November page of the 2027 calendar"><img src="images/calendar/calendar_november.png" alt="November"></button></li>
-          <li><button type="button" data-src="images/calendar/calendar_december.png" data-alt="December page of the 2027 calendar"><img src="images/calendar/calendar_december.png" alt="December"></button></li> -->
+          <li><button type="button" data-src="images/calendar/cover.webp" data-alt="Cover of the Kentish Town Vegbox Seasonal Veg Calendar 2027, showing Brassica the cabbage sprite above a patchwork of fields" aria-current="true"><img src="images/calendar/cover.webp" alt="Cover"></button></li>
+          <li><button type="button" data-src="images/calendar/instructions.webp" data-alt="How does this calendar work? A diagram labelling the month, veg spotlight, Brassica, veg of the month, our team, day planner, Vegbox pick up day and suggested recipes"><img src="images/calendar/instructions.webp" alt="How it works"></button></li>
+          <li><button type="button" data-src="images/calendar/1.webp" data-alt="January page of the 2027 calendar"><img src="images/calendar/1.webp" alt="January"></button></li>
+          <li><button type="button" data-src="images/calendar/2.webp" data-alt="February page of the 2027 calendar"><img src="images/calendar/2.webp" alt="February"></button></li>
+          <li><button type="button" data-src="images/calendar/3.webp" data-alt="March page of the 2027 calendar"><img src="images/calendar/3.webp" alt="March"></button></li>
+          <li><button type="button" data-src="images/calendar/4.webp" data-alt="April page of the 2027 calendar"><img src="images/calendar/4.webp" alt="April"></button></li>
+          <li><button type="button" data-src="images/calendar/5.webp" data-alt="May page of the 2027 calendar"><img src="images/calendar/5.webp" alt="May"></button></li>
+          <li><button type="button" data-src="images/calendar/6.webp" data-alt="June page of the 2027 calendar"><img src="images/calendar/6.webp" alt="June"></button></li>
+          <li><button type="button" data-src="images/calendar/7.webp" data-alt="July page of the 2027 calendar"><img src="images/calendar/7.webp" alt="July"></button></li>
+          <li><button type="button" data-src="images/calendar/8.webp" data-alt="August page of the 2027 calendar"><img src="images/calendar/8.webp" alt="August"></button></li>
+          <li><button type="button" data-src="images/calendar/9.webp" data-alt="September page of the 2027 calendar"><img src="images/calendar/9.webp" alt="September"></button></li>
+          <li><button type="button" data-src="images/calendar/10.webp" data-alt="October page of the 2027 calendar"><img src="images/calendar/10.webp" alt="October"></button></li>
+          <li><button type="button" data-src="images/calendar/11.webp" data-alt="November page of the 2027 calendar"><img src="images/calendar/11.webp" alt="November"></button></li>
+          <li><button type="button" data-src="images/calendar/12.webp" data-alt="December page of the 2027 calendar"><img src="images/calendar/12.webp" alt="December"></button></li>
         </ul>
       </div>
 
@@ -241,6 +246,19 @@
     var dx = e.changedTouches[0].clientX - startX;
     startX = null;
     if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+  });
+
+  var box = stage.parentNode;
+  function zoom(on){
+    box.classList.toggle('zoomed', on);
+    document.body.style.overflow = on ? 'hidden' : '';
+  }
+  box.addEventListener('click', function(e){
+    if (e.target.closest('.arrow')) return;
+    zoom(!box.classList.contains('zoomed'));
+  });
+  window.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') zoom(false);
   });
 
   show(current);
