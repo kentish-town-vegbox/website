@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member survey – Kentish Town Vegbox</title>
+<meta name="description" content="The Kentish Town Vegbox member survey, winter 2026.">
+<meta name="robots" content="noindex">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<style>
+.intro p{margin-bottom:1rem;max-width:40em}
+.intro{margin-bottom:2rem}
+form,.done{background:var(--card);border-radius:8px;padding:2rem 1.75rem;box-shadow:5px 7px 0 rgba(16,24,32,.14)}
+@media (max-width:520px){form,.done{padding:1.5rem 1.1rem}}
+fieldset{border:0;min-width:0}
+.q{margin-bottom:2rem}
+legend,.ql{display:block;font-weight:700;font-size:1rem;margin-bottom:.6rem;padding:0;max-width:38em}
+.n{color:var(--beet)}
+.hint{font-size:.95rem;color:rgba(16,24,32,.75);margin-bottom:.75rem;max-width:40em}
+.hint.small{font-size:.88rem;margin-top:.5rem}
+input[type=text],select,textarea{
+  width:100%;padding:.7rem .85rem;font-family:var(--body);font-size:1rem;
+  border:2px solid rgba(16,24,32,.25);border-radius:6px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--beet)}
+textarea{min-height:100px;resize:vertical}
+.sub-l{display:block;font-size:.95rem;margin:.9rem 0 .35rem}
+/* stacked radio / checkbox lists */
+.stack label{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:.5rem;cursor:pointer}
+.stack input{width:1.15rem;height:1.15rem;margin-top:.25rem;accent-color:var(--beet);cursor:pointer;flex:none}
+/* pill-style radios for scales */
+.pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.pills label{position:relative;cursor:pointer}
+.pills input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.pills span{display:block;padding:.45rem .8rem;border:2px solid rgba(16,24,32,.25);border-radius:999px;background:#fff;font-size:.92rem;line-height:1.3;white-space:nowrap}
+.pills.sm span{padding:.3rem .7rem;font-size:.88rem}
+.pills.nps span{min-width:2.6rem;text-align:center;padding-inline:.4rem}
+.pills input:checked+span{background:var(--beet);border-color:var(--beet);color:#fff}
+.pills input:focus-visible+span{outline:3px solid var(--beet);outline-offset:2px}
+.pills label:hover span{border-color:var(--beet)}
+.scale{display:flex;justify-content:space-between;gap:1rem;font-size:.88rem;color:rgba(16,24,32,.7);margin-top:.5rem;max-width:34rem}
+.grid .row{padding:.85rem 0;border-top:1.5px dashed rgba(16,24,32,.18)}
+.grid .row:first-child{border-top:0;padding-top:.2rem}
+.rl{font-weight:500;margin-bottom:.45rem}
+.veg>div{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem .6rem;margin-top:.4rem}
+.ab{font-size:.85rem;color:rgba(16,24,32,.7);min-width:7.2em}
+.form-section{margin:2.5rem 0 1.6rem;padding-top:1.75rem;border-top:1.5px dashed rgba(16,24,32,.25)}
+.form-section.first{margin-top:0;padding-top:0;border-top:0}
+.form-section h2,.done h2{font-family:var(--display);font-weight:700;font-size:1.45rem;color:var(--green);margin-bottom:.5rem}
+.form-section p{max-width:40em}
+.hp{position:absolute;left:-9999px;top:-9999px}
+#photoPreview{margin-top:.9rem}
+#photoPreview img{max-width:240px;max-height:240px;border-radius:6px;margin-bottom:.4rem}
+button.send{
+  display:inline-block;background:var(--beet);color:#fff;font-family:var(--fun);font-size:1.1rem;
+  padding:.85rem 1.9rem;border-radius:999px;border:2.5px solid var(--beet);cursor:pointer}
+button.send:hover{background:transparent;color:var(--beet)}
+button.send:disabled{opacity:.6;cursor:wait}
+button.link{background:none;border:0;color:var(--beet);text-decoration:underline;font:inherit;font-size:.92rem;cursor:pointer;padding:0}
+.msg{margin-top:1.25rem;padding:1rem 1.2rem;border-radius:6px;display:none}
+.msg.err{display:block;background:#F6E4EA;border-left:6px solid var(--beet)}
+.done p{margin-bottom:.9rem;max-width:40em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main" class="nav-links">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="https://dandelion.events/o/vegbox" target="_blank" rel="noopener">Events</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="sign-up.html">Sign up</a>
+  </div>
+</header>
+
+
+<main>
+  <div class="wrap narrower">
+    <p class="sub">Help shape your veg bag</p>
+    <h1>Vegbox member survey – winter 2026</h1>
+
+    <div class="intro" id="intro">
+      <p>Dear Vegbox member,</p>
+      <p>As a member-led co-operative, Vegbox runs occasional surveys to collate members' views and help shape our service. We really value your views and we act on what we learn. All our surveys are completely <strong>confidential and anonymous</strong>, and we delete all the survey data once the analysis has been completed.</p>
+      <p>If you're uncomfortable about answering any of our questions, don't worry – every question is optional. Having said that, the more responses we get, the more accurate the results will be and the better we can improve.</p>
+      <p>This year we have added a few new questions to help our buyer get the right balance of vegetables in your bag through the seasons, so your answers will go straight into what we order from our growers.</p>
+      <p>Many Vegbox members are, in effect, households containing more than one person, so where this is the case we ask that at least one other adult from the household also completes the survey.</p>
+      <!-- TODO before launch: add the closing date, e.g. <p>Please complete the survey by <strong>Sunday 6 December</strong>.</p> -->
+      <p>The survey will only take about 5 minutes. And please do remember that you can give us feedback (both positive and negative!) about Vegbox at any time, by emailing <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a> or by calling 07815&nbsp;771&nbsp;939.</p>
+    </div>
+
+    <form id="surveyForm" novalidate>
+<div class="form-section first"><h2>Section 1: You and your bag</h2></div>
+
+<fieldset class="q"><legend><span class="n">1.</span> What type of bag do you have?</legend>
+<div class="stack">
+<label><input type="radio" name="q1_bag" value="Small (Yellow)"><span>Small (Yellow)</span></label>
+<label><input type="radio" name="q1_bag" value="Small+Fruit (Orange)"><span>Small+Fruit (Orange)</span></label>
+<label><input type="radio" name="q1_bag" value="Standard (Brown)"><span>Standard (Brown)</span></label>
+<label><input type="radio" name="q1_bag" value="Standard+Fruit (Green)"><span>Standard+Fruit (Green)</span></label>
+<label><input type="radio" name="q1_bag" value="Family (Blue)"><span>Family (Blue)</span></label>
+<label><input type="radio" name="q1_bag" value="Family+Fruit (Purple)"><span>Family+Fruit (Purple)</span></label>
+<label><input type="radio" name="q1_bag" value="Mega (Red)"><span>Mega (Red)</span></label>
+</div>
+</fieldset>
+
+<fieldset class="q"><legend><span class="n">2.</span> How long have you been a member?</legend>
+<div class="stack">
+<label><input type="radio" name="q2_length" value="Less than 3 months"><span>Less than 3 months</span></label>
+<label><input type="radio" name="q2_length" value="3 months to 1 year"><span>3 months to 1 year</span></label>
+<label><input type="radio" name="q2_length" value="1–4 years"><span>1–4 years</span></label>
+<label><input type="radio" name="q2_length" value="More than 4 years"><span>More than 4 years</span></label>
+</div>
+</fieldset>
+
+<div class="q"><label class="ql" for="q3_collection"><span class="n">3.</span> Which collection point do you use?</label><select id="q3_collection" name="q3_collection"><option value="">Choose one…</option><option>Brook Gate pub, N4 2JS</option><option>Calthorpe Community Gardens, WC1X 8LH</option><option>Camden Market, NW1 8AF</option><option>Culpeper Community Garden, N1 0EJ</option><option>Doynton Street, N19 5BX</option><option>The Grafton Pub, NW5 3LG</option><option>Highgate Newtown Community Partners, N19 5DQ</option><option>Hilldrop Community Centre, N7 9PL</option><option>Islington Tennis Centre and Gym, N7 9PL</option><option>Kentish Town Fire Station, NW5 1NT</option><option>Kentish Town Health Centre, NW5 2BX</option><option>Life After Hummus, NW1 1ES</option><option>Primrose Gardens, NW3 4TP</option><option>Refill Therapy: Zero Waste Store, N7 6JD</option><option>Sobell Leisure Centre, N7 7NY</option><option>St Georges Church, N7 0ND</option><option>Sunnyside Community Gardens, N19 3LX</option><option>The Thanet community centre, NW5 4HD</option><option>The Undercraft, NW3 2HP</option><option>36 Upper Park Road, NW3 2UT</option><option>Vagabond cafe, N7 8LT</option></select></div>
+
+<fieldset class="q"><legend><span class="n">4.</span> How would you rate the collection point arrangements?</legend>
+<div class="pills rate">
+<label><input type="radio" name="q4_collection_rating" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q4_collection_rating" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q4_collection_rating" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q4_collection_rating" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q4_collection_rating" value="5"><span>5 Great</span></label>
+</div>
+</fieldset>
+
+<div class="q"><label class="ql" for="q5_collection_improve"><span class="n">5.</span> What could be improved about the collection point arrangements?</label>
+<textarea id="q5_collection_improve" name="q5_collection_improve" maxlength="4000"></textarea></div>
+
+<fieldset class="q"><legend><span class="n">6.</span> To help us get the balance of recipes in the newsletter right, which of these best describes your typical diet?</legend>
+<div class="stack">
+<label><input type="radio" name="q6_diet" value="Vegan"><span>Vegan</span></label>
+<label><input type="radio" name="q6_diet" value="Vegetarian"><span>Vegetarian</span></label>
+<label><input type="radio" name="q6_diet" value="Pescatarian (eat fish but not meat)"><span>Pescatarian (eat fish but not meat)</span></label>
+<label><input type="radio" name="q6_diet" value="Flexitarian (mostly eat plant-based food but also some meat/fish)"><span>Flexitarian (mostly eat plant-based food but also some meat/fish)</span></label>
+<label><input type="radio" name="q6_diet" value="Omnivore (eat meat, fish, dairy, veg)"><span>Omnivore (eat meat, fish, dairy, veg)</span></label>
+</div>
+</fieldset>
+
+<div class="form-section"><h2>Section 2: Your experience</h2></div>
+
+<div class="q"><label class="ql" for="q7_experience"><span class="n">7.</span> How would you summarise your experience of being a member of Kentish Town Vegbox?</label>
+<textarea id="q7_experience" name="q7_experience" maxlength="4000"></textarea></div>
+
+<div class="q"><label class="ql" for="q8_cooking"><span class="n">8.</span> Has being a member of Vegbox changed the way you cook and eat? In what way?</label>
+<textarea id="q8_cooking" name="q8_cooking" maxlength="4000"></textarea></div>
+
+<fieldset class="q"><legend><span class="n">9.</span> On a scale of 0 to 10, how likely are you to recommend Vegbox to a friend or colleague?</legend>
+<div class="pills nps">
+<label><input type="radio" name="q9_nps" value="0"><span>0</span></label>
+<label><input type="radio" name="q9_nps" value="1"><span>1</span></label>
+<label><input type="radio" name="q9_nps" value="2"><span>2</span></label>
+<label><input type="radio" name="q9_nps" value="3"><span>3</span></label>
+<label><input type="radio" name="q9_nps" value="4"><span>4</span></label>
+<label><input type="radio" name="q9_nps" value="5"><span>5</span></label>
+<label><input type="radio" name="q9_nps" value="6"><span>6</span></label>
+<label><input type="radio" name="q9_nps" value="7"><span>7</span></label>
+<label><input type="radio" name="q9_nps" value="8"><span>8</span></label>
+<label><input type="radio" name="q9_nps" value="9"><span>9</span></label>
+<label><input type="radio" name="q9_nps" value="10"><span>10</span></label>
+</div><p class="scale"><span>0 = Not likely at all</span><span>10 = Extremely likely</span></p>
+</fieldset>
+
+<div class="form-section"><h2>Section 3: Rating your bag</h2></div>
+
+<fieldset class="q"><legend><span class="n">10.</span> How would you rate the following aspects of the Kentish Town Vegbox scheme?</legend>
+<div class="grid">
+<div class="row" role="group" aria-label="The quality of veg"><p class="rl">The quality of veg</p><div class="pills rate">
+<label><input type="radio" name="q10_veg_quality" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q10_veg_quality" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q10_veg_quality" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q10_veg_quality" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q10_veg_quality" value="5"><span>5 Great</span></label>
+</div></div>
+<div class="row" role="group" aria-label="The quantity of veg"><p class="rl">The quantity of veg</p><div class="pills rate">
+<label><input type="radio" name="q10_veg_quantity" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q10_veg_quantity" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q10_veg_quantity" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q10_veg_quantity" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q10_veg_quantity" value="5"><span>5 Great</span></label>
+</div></div>
+<div class="row" role="group" aria-label="The variety/range of veg"><p class="rl">The variety/range of veg</p><div class="pills rate">
+<label><input type="radio" name="q10_veg_variety" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q10_veg_variety" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q10_veg_variety" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q10_veg_variety" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q10_veg_variety" value="5"><span>5 Great</span></label>
+</div></div>
+<div class="row" role="group" aria-label="The value for money of veg"><p class="rl">The value for money of veg</p><div class="pills rate">
+<label><input type="radio" name="q10_veg_value" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q10_veg_value" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q10_veg_value" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q10_veg_value" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q10_veg_value" value="5"><span>5 Great</span></label>
+</div></div>
+</div>
+</fieldset>
+
+<fieldset class="q" id="fruitQ"><legend><span class="n">11.</span> If you have the fruit supplement:</legend>
+<div class="grid">
+<div class="row" role="group" aria-label="The quality of fruit"><p class="rl">The quality of fruit</p><div class="pills rate">
+<label><input type="radio" name="q11_fruit_quality" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q11_fruit_quality" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q11_fruit_quality" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q11_fruit_quality" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q11_fruit_quality" value="5"><span>5 Great</span></label>
+</div></div>
+<div class="row" role="group" aria-label="The quantity of fruit"><p class="rl">The quantity of fruit</p><div class="pills rate">
+<label><input type="radio" name="q11_fruit_quantity" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q11_fruit_quantity" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q11_fruit_quantity" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q11_fruit_quantity" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q11_fruit_quantity" value="5"><span>5 Great</span></label>
+</div></div>
+<div class="row" role="group" aria-label="The variety/range of fruit"><p class="rl">The variety/range of fruit</p><div class="pills rate">
+<label><input type="radio" name="q11_fruit_variety" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q11_fruit_variety" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q11_fruit_variety" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q11_fruit_variety" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q11_fruit_variety" value="5"><span>5 Great</span></label>
+</div></div>
+<div class="row" role="group" aria-label="The value for money of fruit"><p class="rl">The value for money of fruit</p><div class="pills rate">
+<label><input type="radio" name="q11_fruit_value" value="1"><span>1 Very poor</span></label>
+<label><input type="radio" name="q11_fruit_value" value="2"><span>2 Poor</span></label>
+<label><input type="radio" name="q11_fruit_value" value="3"><span>3 Satisfactory</span></label>
+<label><input type="radio" name="q11_fruit_value" value="4"><span>4 Good</span></label>
+<label><input type="radio" name="q11_fruit_value" value="5"><span>5 Great</span></label>
+</div></div>
+</div>
+</fieldset>
+
+<div class="form-section"><h2>Section 4: Veg by veg</h2></div>
+
+<fieldset class="q"><legend><span class="n">12.</span> Have a look at this list of items and answer A and B for each.</legend><p class="hint"><strong>A:</strong> At the moment, what do you think of the amount of this veg you usually receive? <strong>B:</strong> In the future, how frequently would you like to see this veg in your bag?</p>
+<div class="grid">
+<div class="row veg"><p class="rl">Onions</p>
+<div role="group" aria-label="Onions: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_onions_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_onions_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_onions_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Onions: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_onions_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_onions_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_onions_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_onions_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Potatoes</p>
+<div role="group" aria-label="Potatoes: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_potatoes_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_potatoes_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_potatoes_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Potatoes: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_potatoes_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_potatoes_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_potatoes_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_potatoes_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Mushrooms</p>
+<div role="group" aria-label="Mushrooms: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_mushrooms_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_mushrooms_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_mushrooms_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Mushrooms: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_mushrooms_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_mushrooms_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_mushrooms_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_mushrooms_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Carrots</p>
+<div role="group" aria-label="Carrots: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_carrots_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_carrots_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_carrots_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Carrots: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_carrots_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_carrots_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_carrots_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_carrots_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Other root veg (e.g. parsnips, beetroot, celeriac)</p>
+<div role="group" aria-label="Other root veg (e.g. parsnips, beetroot, celeriac): amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_other_root_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_other_root_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_other_root_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Other root veg (e.g. parsnips, beetroot, celeriac): how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_other_root_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_other_root_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_other_root_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_other_root_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Leafy greens (e.g. spinach, chard, kale)</p>
+<div role="group" aria-label="Leafy greens (e.g. spinach, chard, kale): amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_leafy_greens_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_leafy_greens_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_leafy_greens_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Leafy greens (e.g. spinach, chard, kale): how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_leafy_greens_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_leafy_greens_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_leafy_greens_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_leafy_greens_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Salad bags</p>
+<div role="group" aria-label="Salad bags: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_salad_bags_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_salad_bags_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_salad_bags_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Salad bags: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_salad_bags_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_salad_bags_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_salad_bags_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_salad_bags_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Cabbages and cauliflower</p>
+<div role="group" aria-label="Cabbages and cauliflower: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_cabbage_cauli_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_cabbage_cauli_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_cabbage_cauli_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Cabbages and cauliflower: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_cabbage_cauli_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_cabbage_cauli_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_cabbage_cauli_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_cabbage_cauli_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Squash and pumpkin</p>
+<div role="group" aria-label="Squash and pumpkin: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_squash_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_squash_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_squash_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Squash and pumpkin: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_squash_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_squash_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_squash_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_squash_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Leeks</p>
+<div role="group" aria-label="Leeks: amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_leeks_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_leeks_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_leeks_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Leeks: how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_leeks_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_leeks_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_leeks_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_leeks_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+<div class="row veg"><p class="rl">Summer veg (e.g. tomatoes, courgettes, beans)</p>
+<div role="group" aria-label="Summer veg (e.g. tomatoes, courgettes, beans): amount now"><span class="ab">A: amount now</span><div class="pills sm">
+<label><input type="radio" name="q12_summer_veg_amount" value="Not enough"><span>Not enough</span></label>
+<label><input type="radio" name="q12_summer_veg_amount" value="About right"><span>About right</span></label>
+<label><input type="radio" name="q12_summer_veg_amount" value="Too much"><span>Too much</span></label>
+</div></div>
+<div role="group" aria-label="Summer veg (e.g. tomatoes, courgettes, beans): how often in future"><span class="ab">B: in future</span><div class="pills sm">
+<label><input type="radio" name="q12_summer_veg_freq" value="Weekly"><span>Weekly</span></label>
+<label><input type="radio" name="q12_summer_veg_freq" value="Fortnightly"><span>Fortnightly</span></label>
+<label><input type="radio" name="q12_summer_veg_freq" value="Monthly"><span>Monthly</span></label>
+<label><input type="radio" name="q12_summer_veg_freq" value="Rarely / never"><span>Rarely / never</span></label>
+</div></div></div>
+</div>
+</fieldset>
+
+<div class="q"><label class="ql" for="q13_favourite"><span class="n">13.</span> What is your favourite vegetable to receive?</label>
+<input type="text" id="q13_favourite" name="q13_favourite" maxlength="300"></div>
+
+<div class="q"><label class="ql" for="q14_never_eat"><span class="n">14.</span> What is the vegetable you never eat from our bags?</label>
+<input type="text" id="q14_never_eat" name="q14_never_eat" maxlength="300"></div>
+
+<div class="form-section"><h2>Section 5: Helping our buyer get the balance right</h2><p>These questions are new this year. Your answers go straight into what we order from our growers.</p></div>
+
+<fieldset class="q"><legend><span class="n">15.</span> In a typical week, roughly how much of your veg goes unused by you?</legend><p class="hint">Include anything that you may give to others as well as items going to compost.</p>
+<div class="stack">
+<label><input type="radio" name="q15_unused" value="None – we use it all"><span>None – we use it all</span></label>
+<label><input type="radio" name="q15_unused" value="A little (one or two items)"><span>A little (one or two items)</span></label>
+<label><input type="radio" name="q15_unused" value="About a quarter of the bag"><span>About a quarter of the bag</span></label>
+<label><input type="radio" name="q15_unused" value="Half or more"><span>Half or more</span></label>
+</div>
+</fieldset>
+
+<fieldset class="q"><legend><span class="n">16.</span> Do you regularly buy extra fruit or veg elsewhere to top up your bag?</legend>
+<div class="stack">
+<label><input type="radio" name="q16_topup" value="No, the bag covers what we need"><span>No, the bag covers what we need</span></label>
+<label><input type="radio" name="q16_topup" value="Yes, occasionally"><span>Yes, occasionally</span></label>
+<label><input type="radio" name="q16_topup" value="Yes, most weeks"><span>Yes, most weeks</span></label>
+</div><label class="sub-l" for="q16_topup_what">What and how much do you usually buy?</label><input type="text" id="q16_topup_what" name="q16_topup_what" maxlength="500">
+</fieldset>
+
+<fieldset class="q"><legend><span class="n">17.</span> Which would you rather have in your bag?</legend>
+<div class="stack">
+<label><input type="radio" name="q17_staples_variety" value="The same reliable staples every week"><span>The same reliable staples every week</span></label>
+<label><input type="radio" name="q17_staples_variety" value="A mix of both"><span>A mix of both</span></label>
+<label><input type="radio" name="q17_staples_variety" value="As much variety as possible, surprise me with unusual items"><span>As much variety as possible, surprise me with unusual items</span></label>
+</div>
+</fieldset>
+
+<fieldset class="q"><legend><span class="n">18.</span> What would you rather have in your bag?</legend>
+<div class="stack">
+<label><input type="radio" name="q18_items_amounts" value="More items, less of each item"><span>More items, less of each item</span></label>
+<label><input type="radio" name="q18_items_amounts" value="Fewer items, larger amounts of each"><span>Fewer items, larger amounts of each</span></label>
+</div>
+</fieldset>
+
+<fieldset class="q"><legend><span class="n">19.</span> In late winter and spring, UK-grown organic veg is limited and bags can get repetitive. What would you prefer?</legend>
+<div class="stack">
+<label><input type="radio" name="q19_winter_sourcing" value="Keep it 100% UK-grown, even if it means more of the same"><span>Keep it 100% UK-grown, even if it means more of the same</span></label>
+<label><input type="radio" name="q19_winter_sourcing" value="Mostly UK-grown, with the occasional imported item"><span>Mostly UK-grown, with the occasional imported item</span></label>
+<label><input type="radio" name="q19_winter_sourcing" value="I&#x27;m fine either way"><span>I&#x27;m fine either way</span></label>
+<label><input type="radio" name="q19_winter_sourcing" value="I&#x27;d like more variety, even if some comes from continental Europe"><span>I&#x27;d like more variety, even if some comes from continental Europe</span></label>
+<label><input type="radio" name="q19_winter_sourcing" value="Bring on the variety no matter where it comes from"><span>Bring on the variety no matter where it comes from</span></label>
+</div>
+</fieldset>
+
+<fieldset class="q"><legend><span class="n">20.</span> Which of these less common vegetables would you be happy to receive now and then?</legend><p class="hint">Tick all that apply.</p>
+<div class="stack"><label><input type="checkbox" name="q20_less_common" value="Kohlrabi"><span>Kohlrabi</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Fennel"><span>Fennel</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Romanesco cauliflower"><span>Romanesco cauliflower</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Jerusalem artichoke"><span>Jerusalem artichoke</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Pak choi or other Asian greens"><span>Pak choi or other Asian greens</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Globe artichoke"><span>Globe artichoke</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Radicchio / chicory"><span>Radicchio / chicory</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Fresh herbs (e.g. parsley, coriander)"><span>Fresh herbs (e.g. parsley, coriander)</span></label>
+<label><input type="checkbox" name="q20_less_common" value="Garlic / young garlic"><span>Garlic / young garlic</span></label>
+<label><input type="checkbox" name="q20_less_common" value="None of these, thanks"><span>None of these, thanks</span></label></div><label class="sub-l" for="q20_other">Other (please type)</label><input type="text" id="q20_other" name="q20_other" maxlength="300">
+</fieldset>
+
+<div class="form-section"><h2>Finally</h2></div>
+
+<div class="q"><label class="ql" for="q21_comments"><span class="n">21.</span> Any other comments for us?</label>
+<textarea id="q21_comments" name="q21_comments" maxlength="4000"></textarea></div>
+
+<div class="q photo"><label class="ql" for="photo"><span class="n">22.</span> Picture gallery!</label>
+<p class="hint">Do you have a picture or photo to share – perhaps a dish you made from our produce, a wonky vegetable you found in your bag, or a drawing you or a member of your family may have done? We will share some of them at the AGM.</p>
+<input type="file" id="photo" accept="image/*">
+<p class="hint small" id="photoNote">One image, optional. Please only upload a picture you are happy for us to show at the AGM – it is stored without your name.</p>
+<div id="photoPreview" hidden><img alt="Preview of your chosen picture"><button type="button" id="photoRemove" class="link">Remove picture</button></div></div>
+
+      <div class="hp" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input type="text" id="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="send" id="submitBtn">Send my answers</button>
+      <div class="msg" id="formMsg" role="alert"></div>
+    </form>
+
+    <div class="done" id="done" hidden tabindex="-1">
+      <h2>Thank you for your feedback – we really appreciate it!</h2>
+      <p>Your answers have been sent. We'll share what we learn at the AGM.</p>
+      <p>If someone else in your household would like to have their say, they can <a href="survey.html">fill in the survey too</a>.</p>
+      <p><a class="btn" href="index.html">Back to the homepage</a></p>
+    </div>
+  </div>
+</main>
+
+<div class="trees" aria-hidden="true">
+  <img src="images/trees.webp" alt="A background illustration of trees on a hill.">
+</div>
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
+      <p>A not-for-profit community co-operative, growing good food and good company in North London since 2012.</p>
+      <p class="footer-contact">
+        <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a><br>
+        <a href="tel:+447815771939">07815 771 939</a>
+      </p>
+    </div>
+    <nav class="footer-col" aria-label="About the co-op">
+      <h2>The co-op</h2>
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Get involved">
+      <h2>Get involved</h2>
+      <ul>
+        <li><a href="sign-up.html">Sign up</a></li>
+        <li><a href="index.html#collect">Collection points</a></li>
+        <li><a href="index.html#visit">Volunteer</a></li>
+        <li><a href="solidarity-fund.html">Solidarity Fund</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Stay in touch">
+      <h2>Stay in touch</h2>
+      <ul>
+        <li><a href="https://kentishtownvegbox.substack.com/" target="_blank" rel="noopener">Newsletter</a></li>
+        <li><a href="https://www.facebook.com/KentishTownVegbox/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/kentishtownvegbox/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Kentish Town Vegbox &middot; A community co-operative serving Camden &amp; Islington</p>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var form = document.getElementById('surveyForm');
+  var btn = document.getElementById('submitBtn');
+  var msg = document.getElementById('formMsg');
+  var fruitQ = document.getElementById('fruitQ');
+  var photoInput = document.getElementById('photo');
+  var preview = document.getElementById('photoPreview');
+  var photo = null; // {type, data} – base64 without the data: prefix
+  var MAX_SIDE = 2000, MAX_B64 = 8 * 1024 * 1024;
+
+  // Q11 only applies to bags with fruit (Mega includes fruit)
+  form.addEventListener('change', function(e){
+    if (e.target.name !== 'q1_bag') return;
+    var v = e.target.value, noFruit = v.indexOf('Fruit') === -1 && v.indexOf('Mega') === -1;
+    fruitQ.hidden = noFruit;
+    if (noFruit) fruitQ.querySelectorAll('input').forEach(function(i){ i.checked = false; });
+  });
+
+  // Let people un-pick a radio by clicking it again, since every question is optional
+  var lastChecked = null;
+  form.addEventListener('pointerdown', function(e){
+    var l = e.target.closest('label'), i = l && l.querySelector('input[type=radio]');
+    lastChecked = (i && i.checked) ? i : null;
+  });
+  form.addEventListener('click', function(e){
+    if (e.target.type === 'radio' && e.target === lastChecked) { e.target.checked = false; lastChecked = null; }
+  });
+
+  function err(t){ msg.className = 'msg err'; msg.textContent = t; }
+  function clearPhoto(){ photo = null; photoInput.value = ''; preview.hidden = true; }
+  document.getElementById('photoRemove').addEventListener('click', clearPhoto);
+
+  function readDataUrl(file){
+    return new Promise(function(res, rej){
+      var r = new FileReader();
+      r.onload = function(){ res(r.result); }; r.onerror = rej; r.readAsDataURL(file);
+    });
+  }
+  // Shrink big phone photos in the browser so uploads are quick
+  function shrink(dataUrl){
+    return new Promise(function(res){
+      var img = new Image();
+      img.onload = function(){
+        var s = Math.min(1, MAX_SIDE / Math.max(img.width, img.height));
+        var c = document.createElement('canvas');
+        c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        res(c.toDataURL('image/jpeg', 0.85));
+      };
+      img.onerror = function(){ res(null); }; // browser can't decode it (e.g. HEIC) – send as is
+      img.src = dataUrl;
+    });
+  }
+  photoInput.addEventListener('change', function(){
+    var f = photoInput.files[0];
+    msg.className = 'msg';
+    if (!f) { clearPhoto(); return; }
+    if (f.type && f.type.indexOf('image/') !== 0) { clearPhoto(); err('Please choose an image file (a photo or picture).'); return; }
+    readDataUrl(f).then(function(orig){
+      return shrink(orig).then(function(small){
+        var url = small || orig, i = url.indexOf(',');
+        var data = url.slice(i + 1), type = (url.slice(5, i).split(';')[0]) || f.type || 'image/jpeg';
+        if (data.length > MAX_B64) { clearPhoto(); err('Sorry, that picture is too large to upload. Please choose a smaller one (under about 5 MB).'); return; }
+        photo = { type: type, data: data };
+        preview.querySelector('img').src = small || '';
+        preview.querySelector('img').hidden = !small;
+        preview.hidden = false;
+      });
+    }).catch(function(){ clearPhoto(); err('Sorry, we could not read that picture. Please try another.'); });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'msg';
+    var answers = {}, any = false;
+    new FormData(form).forEach(function(v, k){
+      v = String(v).trim();
+      if (!v) return;
+      any = true;
+      if (k === 'q20_less_common') (answers[k] = answers[k] || []).push(v);
+      else answers[k] = v;
+    });
+    if (!any && !photo) { err('Please answer at least one question before sending.'); return; }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('/api/survey', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answers: answers, photo: photo, website: document.getElementById('website').value })
+    })
+      .then(function(r){ return r.json().catch(function(){ return { ok: false }; }); })
+      .then(function(res){
+        if (res.ok) {
+          form.hidden = true; document.getElementById('intro').hidden = true;
+          var d = document.getElementById('done'); d.hidden = false; d.focus();
+          window.scrollTo(0, 0);
+        } else {
+          err(res.error || 'Sorry, something went wrong. Please try again, or email us at info@vegbox.org.uk.');
+        }
+      })
+      .catch(function(){ err('Sorry, something went wrong. Please check your connection and try again.'); })
+      .finally(function(){ btn.disabled = false; btn.textContent = 'Send my answers'; });
+  });
+})();
+</script>
+</body>
+</html>
