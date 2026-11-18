@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board nomination – Kentish Town Vegbox</title>
+<meta name="description" content="Nominate yourself for the Board of Directors of Kentish Town Vegbox Ltd at the 30 November 2026 AGM.">
+<meta name="robots" content="noindex">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<style>
+.intro p{margin-bottom:1rem;max-width:40em}
+.intro{margin-bottom:2rem}
+form,.done{background:var(--card);border-radius:8px;padding:2rem 1.75rem;box-shadow:5px 7px 0 rgba(16,24,32,.14)}
+@media (max-width:520px){form,.done{padding:1.5rem 1.1rem}}
+.q{margin-bottom:1.6rem}
+.ql{display:block;font-weight:700;font-size:1rem;margin-bottom:.5rem;max-width:38em}
+.req{color:var(--beet)}
+.hint{font-size:.95rem;color:rgba(16,24,32,.75);margin-bottom:.6rem;max-width:40em}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{
+  width:100%;padding:.7rem .85rem;font-family:var(--body);font-size:1rem;
+  border:2px solid rgba(16,24,32,.25);border-radius:6px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus{border-color:var(--beet)}
+textarea{min-height:260px;resize:vertical}
+.check{display:flex;align-items:flex-start;gap:.6rem;cursor:pointer;max-width:40em}
+.check input{width:1.15rem;height:1.15rem;margin-top:.25rem;accent-color:var(--beet);flex:none}
+.deadline{font-weight:700;margin:.5rem 0 1.4rem}
+.hp{position:absolute;left:-9999px;top:-9999px}
+button.send{
+  display:inline-block;background:var(--beet);color:#fff;font-family:var(--fun);font-size:1.1rem;
+  padding:.85rem 1.9rem;border-radius:999px;border:2.5px solid var(--beet);cursor:pointer}
+button.send:hover{background:transparent;color:var(--beet)}
+button.send:disabled{opacity:.6;cursor:wait}
+.msg{margin-top:1.25rem;padding:1rem 1.2rem;border-radius:6px;display:none}
+.msg.err{display:block;background:#F6E4EA;border-left:6px solid var(--beet)}
+.done h2{font-family:var(--display);font-weight:700;font-size:1.45rem;color:var(--green);margin-bottom:.5rem}
+.done p{margin-bottom:.9rem;max-width:40em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" aria-label="Kentish Town Vegbox – home"><img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012"></a>
+    <nav aria-label="Main" class="nav-links">
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="https://dandelion.events/o/vegbox" target="_blank" rel="noopener">Events</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="sign-up.html">Sign up</a>
+  </div>
+</header>
+
+
+
+<main>
+  <div class="wrap narrower">
+    <p class="sub">Kentish Town Vegbox Ltd &middot; AGM, 30 November 2026</p>
+    <h1>Director nomination form</h1>
+
+    <div class="intro" id="intro">
+      <p>If you would like to join the Board of Directors of Kentish Town Vegbox Ltd, please fill out this form.</p>
+      <p>If you would like any more information about joining the Board, please phone our Board Co-Chair Maggie on <a href="tel:+447984972257">07984&nbsp;972&nbsp;257</a>.</p>
+      <p>Membership of the Board of Directors involves the commitment to attend meetings – we expect members to attend 80% of our monthly meetings per year – and to play an active role in fulfilling the aims of the co-operative.</p>
+      <p class="deadline">Please fill out this form by end of day Friday 27 November.</p>
+    </div>
+
+    <form id="nominateForm" novalidate>
+      <div class="q"><label class="ql" for="name">Name <span class="req">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" required maxlength="200"></div>
+
+      <div class="q"><label class="ql" for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required maxlength="200"></div>
+
+      <div class="q"><label class="ql" for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="50"></div>
+
+      <div class="q"><label class="ql" for="date">Date <span class="req">*</span></label>
+        <input type="date" id="date" name="date" required></div>
+
+      <div class="q"><label class="ql" for="statement">Your reasons for standing <span class="req">*</span></label>
+        <p class="hint" id="statementHint">Please write a few words giving your reasons for wanting to stand, and any useful experience or skills that you would bring as a Director of the Board.</p>
+        <textarea id="statement" name="statement" aria-describedby="statementHint" required maxlength="6000"></textarea></div>
+
+      <div class="q"><label class="check"><input type="checkbox" id="commit" name="commit" value="Yes" required>
+        <span>I understand that Board members are expected to attend 80% of monthly Board meetings and to play an active role in the co-operative. <span class="req">*</span></span></label></div>
+
+      <div class="hp" aria-hidden="true">
+        <label for="website">Leave this empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="send" id="submitBtn">Submit nomination</button>
+      <div class="msg" id="formMsg" role="alert"></div>
+    </form>
+
+    <div class="done" id="closed" hidden>
+      <h2>Nominations have closed</h2>
+      <p>Nominations for the Board at the 2026 AGM have now closed. If you have any questions, please call Maggie on <a href="tel:+447984972257">07984&nbsp;972&nbsp;257</a>.</p>
+    </div>
+
+    <div class="done" id="done" hidden tabindex="-1">
+      <h2>Thank you for standing</h2>
+      <p>Your nomination has been sent to the Board. We will be in touch before the AGM on Monday 30 November.</p>
+      <p>If you have any questions in the meantime, please call Maggie on <a href="tel:+447984972257">07984&nbsp;972&nbsp;257</a>.</p>
+    </div>
+  </div>
+</main>
+
+<div class="trees" aria-hidden="true">
+  <img src="images/trees.webp" alt="A background illustration of trees on a hill.">
+</div>
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.webp" alt="Kentish Town Vegbox, est. 2012">
+      <p>A not-for-profit community co-operative, growing good food and good company in North London since 2012.</p>
+      <p class="footer-contact">
+        <a href="mailto:info@vegbox.org.uk">info@vegbox.org.uk</a><br>
+        <a href="tel:+447815771939">07815 771 939</a>
+      </p>
+    </div>
+    <nav class="footer-col" aria-label="About the co-op">
+      <h2>The co-op</h2>
+      <ul>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="whats-in-the-bag.html">What's in the bag</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Get involved">
+      <h2>Get involved</h2>
+      <ul>
+        <li><a href="sign-up.html">Sign up</a></li>
+        <li><a href="index.html#collect">Collection points</a></li>
+        <li><a href="index.html#visit">Volunteer</a></li>
+        <li><a href="solidarity-fund.html">Solidarity Fund</a></li>
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Stay in touch">
+      <h2>Stay in touch</h2>
+      <ul>
+        <li><a href="https://kentishtownvegbox.substack.com/" target="_blank" rel="noopener">Newsletter</a></li>
+        <li><a href="https://www.facebook.com/KentishTownVegbox/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/kentishtownvegbox/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026 Kentish Town Vegbox &middot; A community co-operative serving Camden &amp; Islington</p>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var form = document.getElementById('nominateForm');
+  var btn = document.getElementById('submitBtn');
+  var msg = document.getElementById('formMsg');
+  var date = document.getElementById('date');
+  var d = new Date();
+  date.value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+
+  // Nominations close at the end of Sunday 29 November 2026 (London time = UTC in November)
+  if (Date.now() >= Date.parse('2026-11-30T00:00:00Z')) {
+    form.hidden = true;
+    document.querySelector('.deadline').hidden = true;
+    document.getElementById('closed').hidden = false;
+    return;
+  }
+
+  function err(t){ msg.className = 'msg err'; msg.textContent = t; }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    msg.className = 'msg';
+    var f = form.elements;
+    if (!f.name.value.trim()) { err('Please enter your name.'); f.name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) { err('Please enter a valid email address.'); f.email.focus(); return; }
+    if (!f.date.value) { err('Please enter the date.'); f.date.focus(); return; }
+    if (!f.statement.value.trim()) { err('Please write a few words about why you would like to stand.'); f.statement.focus(); return; }
+    if (!f.commit.checked) { err('Please tick the box to confirm you understand the commitment.'); f.commit.focus(); return; }
+
+    btn.disabled = true; btn.textContent = 'Sending…';
+    fetch('/api/nominate', { method: 'POST', body: new FormData(form) })
+      .then(function(r){ return r.json().catch(function(){ return { ok: false }; }); })
+      .then(function(res){
+        if (res.ok) {
+          form.hidden = true; document.getElementById('intro').hidden = true;
+          var done = document.getElementById('done'); done.hidden = false; done.focus();
+          window.scrollTo(0, 0);
+        } else {
+          err(res.error || 'Sorry, something went wrong. Please try again, or call Maggie on 07984 972 257.');
+        }
+      })
+      .catch(function(){ err('Sorry, something went wrong. Please check your connection and try again.'); })
+      .finally(function(){ btn.disabled = false; btn.textContent = 'Submit nomination'; });
+  });
+})();
+</script>
+</body>
+</html>
