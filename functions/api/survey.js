@@ -62,6 +62,9 @@ const COLUMNS = [
   ["q21_comments", "21. Other comments"],
 ];
 
+// Questions that must be answered: [form field name, question number]
+const REQUIRED = [["q1_bag", "1"], ["q2_length", "2"], ["q3_collection", "3"], ["q4_collection_rating", "4"]];
+
 const MAX_TEXT = 4000;
 const MAX_PHOTO_B64 = 8 * 1024 * 1024; // ~6 MB image once decoded
 const PHOTO_EXT = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif', 'image/heic': 'heic', 'image/heif': 'heif' };
@@ -92,6 +95,13 @@ export async function onRequestPost(context) {
         return json({ ok: false, error: 'Sorry, that picture is too large. Please choose a smaller one.' }, 413);
       }
       photo = { type, ext: PHOTO_EXT[type], data: p.data };
+    }
+
+    const missing = REQUIRED.filter(([key]) => !clean(answers[key])).map(([, n]) => n);
+    if (missing.length) {
+      const list = missing.length === 1 ? 'question ' + missing[0]
+        : 'questions ' + missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1];
+      return json({ ok: false, error: 'Please fill in ' + list + ' before sending.' }, 400);
     }
 
     if (!photo && row.every((v) => !v)) {
