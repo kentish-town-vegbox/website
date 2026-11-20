@@ -60,6 +60,11 @@ button.send{
 button.send:hover{background:transparent;color:var(--beet)}
 button.send:disabled{opacity:.6;cursor:wait}
 button.link{background:none;border:0;color:var(--beet);text-decoration:underline;font:inherit;font-size:.92rem;cursor:pointer;padding:0}
+.req{color:#C8102E;font-weight:700;margin-left:.15em}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.req-key{font-size:.92rem;margin-bottom:1.5rem}
+.q.missing{border-left:4px solid #C8102E;padding-left:.9rem;margin-left:calc(-.9rem - 4px)}
+.q-err{color:#C8102E;font-weight:600;font-size:.92rem;margin-top:.5rem}
 .msg{margin-top:1.25rem;padding:1rem 1.2rem;border-radius:6px;display:none}
 .msg.err{display:block;background:#F6E4EA;border-left:6px solid var(--beet)}
 .done p{margin-bottom:.9rem;max-width:40em}
@@ -93,7 +98,7 @@ button.link{background:none;border:0;color:var(--beet);text-decoration:underline
     <div class="intro" id="intro">
       <p>Dear Vegbox member,</p>
       <p>As a member-led co-operative, Vegbox runs occasional surveys to collate members' views and help shape our service. We really value your views and we act on what we learn. All our surveys are completely <strong>confidential and anonymous</strong>, and we delete all the survey data once the analysis has been completed.</p>
-      <p>If you're uncomfortable about answering any of our questions, don't worry – every question is optional. Having said that, the more responses we get, the more accurate the results will be and the better we can improve.</p>
+      <p>If you're uncomfortable about answering any of our questions, don't worry – apart from the first four short questions, every question is optional. Having said that, the more responses we get, the more accurate the results will be and the better we can improve.</p>
       <p>This year we have added a few new questions to help our buyer get the right balance of vegetables in your bag through the seasons, so your answers will go straight into what we order from our growers.</p>
       <p>Many Vegbox members are, in effect, households containing more than one person, so where this is the case we ask that at least one other adult from the household also completes the survey.</p>
       <!-- TODO before launch: add the closing date, e.g. <p>Please complete the survey by <strong>Sunday 6 December</strong>.</p> -->
@@ -102,8 +107,9 @@ button.link{background:none;border:0;color:var(--beet);text-decoration:underline
 
     <form id="surveyForm" novalidate>
 <div class="form-section first"><h2>Section 1: You and your bag</h2></div>
+<p class="req-key">Questions marked <span class="req" aria-hidden="true">*</span> are required.</p>
 
-<fieldset class="q"><legend><span class="n">1.</span> What type of bag do you have?</legend>
+<fieldset class="q" data-required="q1_bag" data-qn="1" aria-required="true"><legend><span class="n">1.</span> What type of bag do you have? <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></legend>
 <div class="stack">
 <label><input type="radio" name="q1_bag" value="Small (Yellow)"><span>Small (Yellow)</span></label>
 <label><input type="radio" name="q1_bag" value="Small+Fruit (Orange)"><span>Small+Fruit (Orange)</span></label>
@@ -115,7 +121,7 @@ button.link{background:none;border:0;color:var(--beet);text-decoration:underline
 </div>
 </fieldset>
 
-<fieldset class="q"><legend><span class="n">2.</span> How long have you been a member?</legend>
+<fieldset class="q" data-required="q2_length" data-qn="2" aria-required="true"><legend><span class="n">2.</span> How long have you been a member? <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></legend>
 <div class="stack">
 <label><input type="radio" name="q2_length" value="Less than 3 months"><span>Less than 3 months</span></label>
 <label><input type="radio" name="q2_length" value="3 months to 1 year"><span>3 months to 1 year</span></label>
@@ -124,9 +130,9 @@ button.link{background:none;border:0;color:var(--beet);text-decoration:underline
 </div>
 </fieldset>
 
-<div class="q"><label class="ql" for="q3_collection"><span class="n">3.</span> Which collection point do you use?</label><select id="q3_collection" name="q3_collection"><option value="">Choose one…</option><option>Brook Gate pub, N4 2JS</option><option>Calthorpe Community Gardens, WC1X 8LH</option><option>Camden Market, NW1 8AF</option><option>Culpeper Community Garden, N1 0EJ</option><option>Doynton Street, N19 5BX</option><option>The Grafton Pub, NW5 3LG</option><option>Highgate Newtown Community Partners, N19 5DQ</option><option>Hilldrop Community Centre, N7 9PL</option><option>Islington Tennis Centre and Gym, N7 9PL</option><option>Kentish Town Fire Station, NW5 1NT</option><option>Kentish Town Health Centre, NW5 2BX</option><option>Life After Hummus, NW1 1ES</option><option>Primrose Gardens, NW3 4TP</option><option>Refill Therapy: Zero Waste Store, N7 6JD</option><option>Sobell Leisure Centre, N7 7NY</option><option>St Georges Church, N7 0ND</option><option>Sunnyside Community Gardens, N19 3LX</option><option>The Thanet community centre, NW5 4HD</option><option>The Undercraft, NW3 2HP</option><option>36 Upper Park Road, NW3 2UT</option><option>Vagabond cafe, N7 8LT</option></select></div>
+<div class="q" data-required="q3_collection" data-qn="3"><label class="ql" for="q3_collection"><span class="n">3.</span> Which collection point do you use? <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></label><select id="q3_collection" name="q3_collection" aria-required="true"><option value="">Choose one…</option><option>Brook Gate pub, N4 2JS</option><option>Calthorpe Community Gardens, WC1X 8LH</option><option>Camden Market, NW1 8AF</option><option>Culpeper Community Garden, N1 0EJ</option><option>Doynton Street, N19 5BX</option><option>The Grafton Pub, NW5 3LG</option><option>Highgate Newtown Community Partners, N19 5DQ</option><option>Hilldrop Community Centre, N7 9PL</option><option>Islington Tennis Centre and Gym, N7 9PL</option><option>Kentish Town Fire Station, NW5 1NT</option><option>Kentish Town Health Centre, NW5 2BX</option><option>Life After Hummus, NW1 1ES</option><option>Primrose Gardens, NW3 4TP</option><option>Refill Therapy: Zero Waste Store, N7 6JD</option><option>Sobell Leisure Centre, N7 7NY</option><option>St Georges Church, N7 0ND</option><option>Sunnyside Community Gardens, N19 3LX</option><option>The Thanet community centre, NW5 4HD</option><option>The Undercraft, NW3 2HP</option><option>36 Upper Park Road, NW3 2UT</option><option>Vagabond cafe, N7 8LT</option></select></div>
 
-<fieldset class="q"><legend><span class="n">4.</span> How would you rate the collection point arrangements?</legend>
+<fieldset class="q" data-required="q4_collection_rating" data-qn="4" aria-required="true"><legend><span class="n">4.</span> How would you rate the collection point arrangements? <span class="req" aria-hidden="true">*</span><span class="visually-hidden"> (required)</span></legend>
 <div class="pills rate">
 <label><input type="radio" name="q4_collection_rating" value="1"><span>1 Very poor</span></label>
 <label><input type="radio" name="q4_collection_rating" value="2"><span>2 Poor</span></label>
@@ -537,7 +543,7 @@ button.link{background:none;border:0;color:var(--beet);text-decoration:underline
     if (noFruit) fruitQ.querySelectorAll('input').forEach(function(i){ i.checked = false; });
   });
 
-  // Let people un-pick a radio by clicking it again, since every question is optional
+  // Let people un-pick a radio by clicking it again, since most questions are optional
   var lastChecked = null;
   form.addEventListener('pointerdown', function(e){
     var l = e.target.closest('label'), i = l && l.querySelector('input[type=radio]');
@@ -592,9 +598,49 @@ button.link{background:none;border:0;color:var(--beet);text-decoration:underline
     }).catch(function(){ clearPhoto(); err('Sorry, we could not read that picture. Please try another.'); });
   });
 
+  // Questions 1–4 are required
+  var required = Array.prototype.slice.call(form.querySelectorAll('[data-required]'));
+  function answered(q){
+    var name = q.getAttribute('data-required');
+    var el = form.elements[name];
+    return !!(el && String(el.value || '').trim());
+  }
+  function markMissing(q, on){
+    q.classList.toggle('missing', on);
+    var e = q.querySelector('.q-err');
+    if (on && !e) {
+      e = document.createElement('p'); e.className = 'q-err';
+      e.id = 'err-' + q.getAttribute('data-required');
+      e.textContent = 'Please answer question ' + q.getAttribute('data-qn') + '.';
+      q.appendChild(e);
+      q.setAttribute('aria-describedby', e.id);
+    } else if (!on && e) { e.remove(); q.removeAttribute('aria-describedby'); }
+  }
+  function listQs(ns){
+    return ns.length === 1 ? 'question ' + ns[0]
+      : 'questions ' + ns.slice(0, -1).join(', ') + ' and ' + ns[ns.length - 1];
+  }
+  // Clear the warning as soon as a missing question is answered
+  form.addEventListener('change', function(){
+    required.forEach(function(q){ if (q.classList.contains('missing') && answered(q)) markMissing(q, false); });
+    if (msg.dataset.kind !== 'required') return;
+    var left = required.filter(function(q){ return q.classList.contains('missing'); });
+    if (!left.length) { msg.className = 'msg'; msg.dataset.kind = ''; }
+    else msg.textContent = 'Please fill in ' + listQs(left.map(function(q){ return q.getAttribute('data-qn'); })) + ' before sending.';
+  });
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    msg.className = 'msg';
+    msg.className = 'msg'; msg.dataset.kind = '';
+    var missing = required.filter(function(q){ var m = !answered(q); markMissing(q, m); return m; });
+    if (missing.length) {
+      err('Please fill in ' + listQs(missing.map(function(q){ return q.getAttribute('data-qn'); })) + ' before sending.');
+      msg.dataset.kind = 'required';
+      var first = missing[0], target = first.querySelector('input, select');
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (target) target.focus({ preventScroll: true });
+      return;
+    }
     var answers = {}, any = false;
     new FormData(form).forEach(function(v, k){
       v = String(v).trim();
